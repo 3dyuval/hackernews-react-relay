@@ -5,12 +5,14 @@ import { AppFeedQuery } from './__generated__/AppFeedQuery.graphql'
 const feedQuery = graphql`
   query AppFeedQuery {
     feed {
-      id
-      description
-      url
-      comments {
-        id
-        body
+      edges {
+        cursor
+        node {
+          description
+          id
+          topic
+          url
+        }
       }
     }
   }
@@ -23,9 +25,13 @@ function App() {
     <>
       <div>
         <h1>Hello relay</h1>
-        {data && data.feed.map(item => <div className="card" key={item.id}>
-          <span>{item.description}</span><span>{item.url}</span>
-        </div>)}
+        {data &&
+          data.feed.edges.map((item) => (
+            <div className="card" key={item.id}>
+              <span>{item.description}</span>
+              <span>{item.url}</span>
+            </div>
+          ))}
       </div>
     </>
   )

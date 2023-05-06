@@ -22,9 +22,9 @@
     /* alias */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src"]
+      "@/*": ["./src"],
+      "@generated/*": ["./src/__generated__"]
     }
-
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

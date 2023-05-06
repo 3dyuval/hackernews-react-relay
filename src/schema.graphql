@@ -1,21 +1,53 @@
-	type Query {
-		info: String!
-		feed: [Link!]!
-		comment(id: ID!): Comment
-		link(id: ID!): Link
-	}
-	type Mutation {
-		postLink(url: String!, description: String!): Link!
-		postCommentOnLink(linkId: ID!, body: String!): Comment!
-	}
-	type Link {
-		id: ID!
-		description: String!
-		url: String!
-		comments: [Comment]
-	}
-	type Comment {
-		id: ID!
-		body: String!
-		link: Link
-	}
+ interface Node {
+    id: ID!
+  }
+
+  type LinkConnection {
+    edges: [LinkEdge]
+    pageInfo: PageInfo!
+  }
+
+  type LinkEdge {
+    cursor: String!
+    node: Link
+  }
+
+  type PageInfo {
+    hasNext: Boolean!
+    hasPrevious: Boolean!
+    startCursor: String
+    endCursor: String
+  }
+
+  type Link implements Node {
+    id: ID!
+    topic: String
+    description: String!
+    url: String!
+    comments: [Comment]
+  }
+
+  type Comment implements Node {
+    id: ID!
+    body: String!
+    link: LinkConnection
+  }
+
+  type Topic {
+    id: String!
+    name: String!
+  }
+
+  type Query {
+    info: String!
+    feed: LinkConnection!
+    comment(id: ID!): Comment
+    link(id: ID!): Link
+    topic(id: String!): Topic
+  }
+
+  type Mutation {
+    postLink(url: String!, description: String!): Link!
+    postCommentOnLink(linkId: ID!, body: String!): Comment!
+    createTopic(id: String!, name: String!): Topic!
+  }

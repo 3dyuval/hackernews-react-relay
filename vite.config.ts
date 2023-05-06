@@ -7,10 +7,11 @@ export default defineConfig({
   plugins: [react(), relay],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, './src')
-    }
+      '@': path.resolve(__dirname, './src'),
+      '@generated': path.resolve(__dirname, './src/__generated__'),
+    },
   },
   server: {
-    port: 3030
-  }
+    port: 3030,
+  },
 })
