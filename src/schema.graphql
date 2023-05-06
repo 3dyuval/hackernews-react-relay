@@ -1,53 +1,64 @@
- interface Node {
-    id: ID!
-  }
+interface Node {
+		id: ID!
+	}
 
-  type LinkConnection {
-    edges: [LinkEdge]
-    pageInfo: PageInfo!
-  }
+	type LinkConnection {
+		edges: [LinkEdge]
+		pageInfo: PageInfo!
+	}
 
-  type LinkEdge {
-    cursor: String!
-    node: Link
-  }
+	type LinkEdge {
+		cursor: String!
+		node: Link
+		commentsCount: Int!
+	}
 
-  type PageInfo {
-    hasNext: Boolean!
-    hasPrevious: Boolean!
-    startCursor: String
-    endCursor: String
-  }
+	type PageInfo {
+		hasNext: Boolean!
+		hasPrevious: Boolean!
+		startCursor: String
+		endCursor: String
+	}
 
-  type Link implements Node {
-    id: ID!
-    topic: String
-    description: String!
-    url: String!
-    comments: [Comment]
-  }
+	type Link implements Node {
+		id: ID!
+		topic: String
+		description: String!
+		url: String!
+		comments: CommentConnection
+	}
 
-  type Comment implements Node {
-    id: ID!
-    body: String!
-    link: LinkConnection
-  }
+	type CommentConnection {
+		edges: [CommentEdge]!
+		pageInfo: PageInfo
+	}
 
-  type Topic {
-    id: String!
-    name: String!
-  }
+	type CommentEdge {
+		cursor: String!
+		node: [Comment]
+	}
 
-  type Query {
-    info: String!
-    feed: LinkConnection!
-    comment(id: ID!): Comment
-    link(id: ID!): Link
-    topic(id: String!): Topic
-  }
+	type Comment implements Node {
+		id: ID!
+		body: String!
+		link: LinkConnection
+	}
 
-  type Mutation {
-    postLink(url: String!, description: String!): Link!
-    postCommentOnLink(linkId: ID!, body: String!): Comment!
-    createTopic(id: String!, name: String!): Topic!
-  }
+	type Topic {
+		id: String!
+		name: String!
+	}
+
+	type Query {
+		info: String!
+		feed: LinkConnection!
+		comment(id: ID!): Comment
+		link(id: ID!): Link
+		topic(id: String!): Topic
+	}
+
+	type Mutation {
+		postLink(url: String!, description: String!): Link!
+		postCommentOnLink(linkId: ID!, body: String!): Comment!
+		createTopic(id: String!, name: String!): Topic!
+	}

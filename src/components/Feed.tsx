@@ -1,7 +1,9 @@
-const Feed = () => {
+export const Feed = () => {
   return (
     <>
-      <p>react snippet works!</p>
+    <div className="app-header">
+      <h1>Y Hacker News</h1>
+    </div>
     </>
   )
 }

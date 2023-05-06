@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c1a8df25aed4d092e4219df4e25467c5>>
+ * @generated SignedSource<<ec766ed4680a11c94ac065dfa48b9676>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,7 @@ export type AppFeedQuery$variables = {};
 export type AppFeedQuery$data = {
   readonly feed: {
     readonly edges: ReadonlyArray<{
+      readonly commentsCount: number;
       readonly cursor: string;
       readonly node: {
         readonly description: string;
@@ -50,6 +51,13 @@ var v0 = [
             "args": null,
             "kind": "ScalarField",
             "name": "cursor",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "commentsCount",
             "storageKey": null
           },
           {
@@ -109,16 +117,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "8154da203b76ebd5479242fcc22a571b",
+    "cacheID": "ed0f8b441d4035e40939bcfbc404b6aa",
     "id": null,
     "metadata": {},
     "name": "AppFeedQuery",
     "operationKind": "query",
-    "text": "query AppFeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
+    "text": "query AppFeedQuery {\n  feed {\n    edges {\n      cursor\n      commentsCount\n      node {\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "156c01a33be0822ebfae7e32144294b1";
+(node as any).hash = "259f2ffafe92d2e2efc31fd0af34f162";
 
 export default node;

@@ -1,15 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app-header {
+  background: var(--ifm-color-primary);
 }
 
-.card {
-  padding: 2em;
-  color: #888;
-  background-color: #d1d4ffaa;
-  border-radius: 8px;
-  margin: 8px 0;
-  height: min(100px, 50px);
+
+
+.link-head, .link-subtext {
+  display: flex;
+  flex-direction: row;
 }
