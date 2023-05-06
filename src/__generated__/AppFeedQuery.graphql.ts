@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<92ee9cb53e967edfdd20a1087f1ccdf6>>
+ * @generated SignedSource<<c1a8df25aed4d092e4219df4e25467c5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,6 @@ export type AppFeedQuery$data = {
       readonly node: {
         readonly description: string;
         readonly id: string;
-        readonly topic: string | null;
         readonly url: string;
       } | null;
     } | null> | null;
@@ -65,13 +64,6 @@ var v0 = [
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "description",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
                 "name": "id",
                 "storageKey": null
               },
@@ -79,7 +71,7 @@ var v0 = [
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "topic",
+                "name": "description",
                 "storageKey": null
               },
               {
@@ -117,16 +109,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "9dcb0a0ce2ced5a7436ff8b3daa764cb",
+    "cacheID": "8154da203b76ebd5479242fcc22a571b",
     "id": null,
     "metadata": {},
     "name": "AppFeedQuery",
     "operationKind": "query",
-    "text": "query AppFeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        description\n        id\n        topic\n        url\n      }\n    }\n  }\n}\n"
+    "text": "query AppFeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "544d2823fe1ea1d0338f965703f0edda";
+(node as any).hash = "156c01a33be0822ebfae7e32144294b1";
 
 export default node;

@@ -22,8 +22,8 @@
     /* alias */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src"],
-      "@generated/*": ["./src/__generated__"]
+      "@/*": ["./src/*"],
+      "@relay/*": ["./src/__generated__/*"]
     }
   },
   "include": ["src"],

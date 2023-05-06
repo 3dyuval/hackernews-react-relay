@@ -1,28 +1,28 @@
-import React from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
-//TODO rank
+// import React from 'react'
+// import { createFragmentContainer, graphql } from 'react-relay'
+// //TODO rank
 
-export default createFragmentContainer(LinkRow, {
-  item: graphql`
-    fragment LinkContent on FeedItem {
-      id
-      description
-      url
-    }
-  `,
-})
+// export default createFragmentContainer(LinkRow, {
+//   item: graphql`
+    // fragment LinkContentFragmet on FeedItem {
+    //   id
+    //   description
+    //   url
+    // }
+//   `,
+// })
 
-const LinkRow = ({ item }) => {
+export const LinkRow = ({ node }) => {
   return (
-    <tr className="athing" id={item.id}>
+    <tr className="athing" id={node.id}>
       <td align="right" valign="top" className="title">
         {/* <span className="rank">{item.rank}.</span> */}
       </td>
       <td valign="top" className="votelinks">
         <center>
           <a
-            id={`up_${item.id}`}
-            href={`vote?id=${item.id}&how=up&goto=news%p=2`}
+            id={`up_${node.id}`}
+            href={`vote?id=${node.id}&how=up&goto=news%p=2`}
           >
             <div className="votearrow" title="upvote"></div>
           </a>
@@ -30,12 +30,12 @@ const LinkRow = ({ item }) => {
       </td>
       <td className="description">
         <span className="descriptionline">
-          <a href={item.url}>{item.description}</a>
+          <a href={node.url}>{node.description}</a>
           <span className="urlbit">
             {' '}
             (
-            <a href={`from?site=${item.url}`}>
-              <span className="sitestr">{item.url}</span>
+            <a href={`from?site=${node.url}`}>
+              <span className="sitestr">{node.url}</span>
             </a>
             )
           </span>
