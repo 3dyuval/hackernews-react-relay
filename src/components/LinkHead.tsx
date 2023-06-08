@@ -1,17 +1,6 @@
 
 
 
-// import { createFragmentContainer, graphql } from 'react-relay'
-// //TODO rank
-// export default createFragmentContainer(LinkRow, {
-//   item: graphql`
-    // fragment LinkContentFragmet on FeedItem {
-    //   id
-    //   description
-    //   url
-    // }
-//   `,
-// })
 
 export const LinkHead = ({ node }) => {
   return (

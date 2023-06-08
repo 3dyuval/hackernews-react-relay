@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<588a6fe0d1d60ebd9e24876a68bffe75>>
+ * @generated SignedSource<<3e39e517b64ed1e644aee09501957426>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,8 +9,8 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type AppFeedQuery$variables = {};
-export type AppFeedQuery$data = {
+export type FeedQuery$variables = {};
+export type FeedQuery$data = {
   readonly feed: {
     readonly edges: ReadonlyArray<{
       readonly cursor: string;
@@ -23,9 +23,9 @@ export type AppFeedQuery$data = {
     } | null> | null;
   };
 };
-export type AppFeedQuery = {
-  response: AppFeedQuery$data;
-  variables: AppFeedQuery$variables;
+export type FeedQuery = {
+  response: FeedQuery$data;
+  variables: FeedQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -104,7 +104,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppFeedQuery",
+    "name": "FeedQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -113,20 +113,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppFeedQuery",
+    "name": "FeedQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "cbec2bce8b5d7f2a366200dd807566d4",
+    "cacheID": "fb2564825d20e1e48bf086b8a24950b9",
     "id": null,
     "metadata": {},
-    "name": "AppFeedQuery",
+    "name": "FeedQuery",
     "operationKind": "query",
-    "text": "query AppFeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        totalComments\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
+    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        totalComments\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3d720a21aeade3d4e7004c4acfb0cca3";
+(node as any).hash = "fcc3679c9c9f7032eb55f81de0f88428";
 
 export default node;
