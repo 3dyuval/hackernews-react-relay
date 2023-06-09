@@ -2,7 +2,7 @@
 
 
 
-export const LinkHead = ({ node }) => {
+export default function LinkHead({ node }) {
   return (
     <div className="link-head">
       <div className="link-rank">

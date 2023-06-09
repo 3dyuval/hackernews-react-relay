@@ -2,7 +2,7 @@ import { RelayEnvironmentProvider } from "react-relay";
 import { RelayEnvironment } from "@/RelayEnvironment";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "@/App.tsx";
+import App from "@/components/App";
 import "@/assets/styles.css";
 import { BrowserRouter } from 'react-router-dom';
 

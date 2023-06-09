@@ -1,40 +1,32 @@
 import { graphql } from 'relay-runtime'
 import { useLazyLoadQuery } from 'react-relay'
-import LinkSubtext from './LinkSubtext'
-import { LinkHead } from './LinkHead'
-import { FeedQuery } from '@relay/FeedQuery.graphql'
+import { FeedQuery as FeedQueryType } from '@relay/FeedQuery.graphql'
+import { Route, Routes } from 'react-router-dom'
+import Comments from '@/components/Comments'
+import Link from '@/components/Link'
 
-const feedQuery = graphql`
-  query FeedQuery {
-    feed {
-      edges {
-        cursor
-        node {
-          totalComments
-          id
-          description
-          url
+export const feedQuery = graphql`
+    query FeedQuery {
+      feed {
+        edges {
+          node {
+            ...LinkFragment
+          }
         }
       }
-    }
   }
 `
 
-export const Feed = () => {
-  const data = useLazyLoadQuery<FeedQuery>(feedQuery, {})
-
- 
-   return  data &&
-      data.feed.edges.map((edge) => (
-        <div key={edge.node.id}>
-          <LinkHead node={edge.node} />
-          <LinkSubtext
-            totalComments={edge.node.totalComments}
-            id={edge.node.id}
-          />
-        </div>
-      ))
+export default function Feed () {
+  
+  const data = useLazyLoadQuery<FeedQueryType>(feedQuery, {})
+  
+  return <Routes>
+      <Route
+        path="/"
+        element={data && data.feed.edges.map(({node}) => <Link link={node} key={node.id} />)}
+      />
+      <Route path="/link/:link" element={<Comments />} />
+    </Routes>
   
 }
-
-export default Feed

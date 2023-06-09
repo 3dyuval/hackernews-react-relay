@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3e39e517b64ed1e644aee09501957426>>
+ * @generated SignedSource<<c846adb4eb8659569bcd09c1f0083220>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,16 +9,13 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type FeedQuery$variables = {};
 export type FeedQuery$data = {
   readonly feed: {
     readonly edges: ReadonlyArray<{
-      readonly cursor: string;
       readonly node: {
-        readonly description: string;
-        readonly id: string;
-        readonly totalComments: number;
-        readonly url: string;
+        readonly " $fragmentSpreads": FragmentRefs<"LinkFragment">;
       } | null;
     } | null> | null;
   };
@@ -28,65 +25,43 @@ export type FeedQuery = {
   variables: FeedQuery$variables;
 };
 
-const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "alias": null,
-    "args": null,
-    "concreteType": "LinkConnection",
-    "kind": "LinkedField",
-    "name": "feed",
-    "plural": false,
+const node: ConcreteRequest = {
+  "fragment": {
+    "argumentDefinitions": [],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "FeedQuery",
     "selections": [
       {
         "alias": null,
         "args": null,
-        "concreteType": "LinkEdge",
+        "concreteType": "LinkConnection",
         "kind": "LinkedField",
-        "name": "edges",
-        "plural": true,
+        "name": "feed",
+        "plural": false,
         "selections": [
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "cursor",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Link",
+            "concreteType": "LinkEdge",
             "kind": "LinkedField",
-            "name": "node",
-            "plural": false,
+            "name": "edges",
+            "plural": true,
             "selections": [
               {
                 "alias": null,
                 "args": null,
-                "kind": "ScalarField",
-                "name": "totalComments",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "description",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "url",
+                "concreteType": "Link",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  {
+                    "args": null,
+                    "kind": "FragmentSpread",
+                    "name": "LinkFragment"
+                  }
+                ],
                 "storageKey": null
               }
             ],
@@ -96,16 +71,6 @@ var v0 = [
         "storageKey": null
       }
     ],
-    "storageKey": null
-  }
-];
-return {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "FeedQuery",
-    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -114,19 +79,80 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "FeedQuery",
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "LinkConnection",
+        "kind": "LinkedField",
+        "name": "feed",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "LinkEdge",
+            "kind": "LinkedField",
+            "name": "edges",
+            "plural": true,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Link",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "totalComments",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "description",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "url",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "fb2564825d20e1e48bf086b8a24950b9",
+    "cacheID": "ee9d2b8749472f8f26bd6dbffaa9f355",
     "id": null,
     "metadata": {},
     "name": "FeedQuery",
     "operationKind": "query",
-    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        totalComments\n        id\n        description\n        url\n      }\n    }\n  }\n}\n"
+    "text": "query FeedQuery {\n  feed {\n    edges {\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n}\n"
   }
 };
-})();
 
-(node as any).hash = "fcc3679c9c9f7032eb55f81de0f88428";
+(node as any).hash = "f6d13708d86181b9171e7115a22757ac";
 
 export default node;

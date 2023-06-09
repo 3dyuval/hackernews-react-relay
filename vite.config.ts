@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@relay': path.resolve(__dirname, './src/__generated__'),
+      '@relay': path.resolve(__dirname, './src/components/__generated__'),
     },
   },
   server: {

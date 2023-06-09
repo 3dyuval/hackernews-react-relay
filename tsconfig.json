@@ -23,7 +23,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@relay/*": ["./src/__generated__/*"]
+      "@relay/*": ["./src/components/__generated__/*"]
     }
   },
   "include": ["src"],
