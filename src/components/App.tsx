@@ -1,8 +1,9 @@
-import '@/style.css'
 import  Feed  from '@/components/Feed'
 import { Suspense } from 'react'
 import { useLazyLoadQuery, graphql } from 'react-relay'
 import { AppQuery as AppQueryType } from './__generated__/AppQuery.graphql'
+import Navigation from '@/components/Navigation'
+import {Routes, Route} from 'react-router-dom'
 
 const query = graphql`
   query AppQuery {
@@ -17,10 +18,10 @@ export default function App() {
 
   return (
     <Suspense fallback={'Loading'}>
-      <div className="app-header">
-        <h1>{info}</h1>
-      </div>
-      <Feed />
+      <Navigation info={info} />
+      <Routes>
+        <Route path="/*" element={<Feed />} />
+      </Routes>
     </Suspense>
   )
 }

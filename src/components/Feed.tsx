@@ -9,6 +9,7 @@ export const feedQuery = graphql`
     query FeedQuery {
       feed {
         edges {
+          cursor
           node {
             ...LinkFragment
           }
@@ -24,7 +25,7 @@ export default function Feed () {
   return <Routes>
       <Route
         path="/"
-        element={data && data.feed.edges.map(({node}) => <Link link={node} key={node.id} />)}
+        element={data && data.feed.edges.map(({node, cursor}) => <Link link={node} key={cursor} />)}
       />
       <Route path="/link/:link" element={<Comments />} />
     </Routes>

@@ -23,14 +23,15 @@ const linkCommentsQuery = graphql`
   }
 `
 
-export default () => {
+export default function Comments () {
   const { link } = useParams()
 
   const data = useLazyLoadQuery<CommentsQueryType>(linkCommentsQuery, {
     id: link,
   })
 
-  return data && <><p><h2># {link}</h2></p>
+  return<>
+  <h2># {link}</h2>
   <br/>
         {data.link.comments.edges.map(({node}) => <p key={node.id}>{node.body}</p>)}
   </>

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c846adb4eb8659569bcd09c1f0083220>>
+ * @generated SignedSource<<131afdd7d66952798c9f53078aa3b733>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type FeedQuery$variables = {};
 export type FeedQuery$data = {
   readonly feed: {
     readonly edges: ReadonlyArray<{
+      readonly cursor: string;
       readonly node: {
         readonly " $fragmentSpreads": FragmentRefs<"LinkFragment">;
       } | null;
@@ -25,7 +26,15 @@ export type FeedQuery = {
   variables: FeedQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "cursor",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -48,6 +57,7 @@ const node: ConcreteRequest = {
             "name": "edges",
             "plural": true,
             "selections": [
+              (v0/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -96,6 +106,7 @@ const node: ConcreteRequest = {
             "name": "edges",
             "plural": true,
             "selections": [
+              (v0/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -144,15 +155,16 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "ee9d2b8749472f8f26bd6dbffaa9f355",
+    "cacheID": "126e6df14a86bb2437212fa76708d407",
     "id": null,
     "metadata": {},
     "name": "FeedQuery",
     "operationKind": "query",
-    "text": "query FeedQuery {\n  feed {\n    edges {\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n}\n"
+    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n}\n"
   }
 };
+})();
 
-(node as any).hash = "f6d13708d86181b9171e7115a22757ac";
+(node as any).hash = "f59df962a6f7f0dc50c251739e0bbaa9";
 
 export default node;

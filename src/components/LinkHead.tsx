@@ -4,7 +4,7 @@
 
 export default function LinkHead({ node }) {
   return (
-    <div className="link-head">
+    <div className="flex-row">
       <div className="link-rank">
         {/* <span className="rank">{item.rank}.</span> */}
       </div>
