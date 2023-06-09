@@ -17,11 +17,13 @@ export default function App() {
   const info = data.info
 
   return (
+    <div className="app container px-0 md:my-4 max-w-4xl">
     <Suspense fallback={'Loading'}>
       <Navigation info={info} />
       <Routes>
         <Route path="/*" element={<Feed />} />
       </Routes>
     </Suspense>
+    </div>
   )
 }

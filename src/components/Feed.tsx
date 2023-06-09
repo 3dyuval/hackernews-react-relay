@@ -24,10 +24,9 @@ export default function Feed () {
   
   return <Routes>
       <Route
-        path="/*"
+        path="/"
         element={data && data.feed.edges.map(({node, cursor}) => <Link link={node} key={cursor} />)}
-      />
+        />
       <Route path="/link/:link" element={<Comments />} />
     </Routes>
-  
 }

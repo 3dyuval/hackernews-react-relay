@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-size: 14px;
+}
+.app-header {
+  background: var(--ifm-color-primary);
+  a:hover {
+    color: var(--ifm-color-gray-900);
+    text-decoration: none;
+  }
+
+  a.active {
+    color: white;
+  }
+}
+
+.app-content {
+  background: rgb(246, 246, 239);
+}

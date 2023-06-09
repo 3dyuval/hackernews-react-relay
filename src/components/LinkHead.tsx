@@ -3,28 +3,30 @@
 
 
 export default function LinkHead({ node }) {
+
+
   return (
-    <div className="flex-row">
-      <div className="link-rank">
+    <div className="flex text-sm">
+      <div className="">
         {/* <span className="rank">{item.rank}.</span> */}
       </div>
-      <div className="link-vote">
+      <div className="">
           <a
             id={`up_${node.id}`}
             href={`vote?id=${node.id}&how=up&goto=news%p=2`}
           >
-            <div className="link-vote-arrow">
+            <div className="">
               👆
             </div>
           </a>
       </div>
-      <div className="link-head-content">
+      <div className="">
         <span>
           <a href={node.url}>{node.description}</a>
-          <span className="urlbit">
+          <span className="text-zinc-500">
             {` `}
-            <a href={`from?site=${node.url}`}>
-              <span className="sitestr">({node.url})</span>
+            <a href={node.url} target="_blank">
+              <span>({node.url})</span>
             </a>
           </span>
         </span>

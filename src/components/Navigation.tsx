@@ -1,45 +1,47 @@
 
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Navigation ({info}: {info: string}) { 
     
-    return  <div className="app-header flex  justify-between py-4 px-2 ">
-        <div className="left flex">
-            <span className="border-white mx-1 border-2 w-6 text-white text-center">Y</span>
-    <h1 className="text-lg mr-4">{info}</h1>
+    return  <div className="app-header flex py-1 justify-between px-2  ">
+        <div className="left flex flex-col md:flex-row">
+            <Link to='/' className="left flex">
+            <span className="border-white mr-1 box-border border aspect-square px-2 text-white text-center font-semibold text-sm">Y</span>
+    <h1 className="text-md mr-4 whitespace-nowrap font-bold">{info}</h1>
+            </Link>
     <nav className="flex items-center">
         <ul className="flex [&>*]:mx-1">
-        <Link to="/new">
+        <NavLink to="/new" >
                 <li>new</li>
-            </Link>
+            </NavLink>
             |
-            <Link to="/threads">
+            <NavLink to="/threads">
                 <li>threads</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/past">
+            <NavLink  to="/past">
                 <li>past</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/comments">
+            <NavLink  to="/comments">
                 <li>comments</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/ask">
+            <NavLink  to="/ask">
                 <li>ask</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/show">
+            <NavLink  to="/show">
                 <li>show</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/jobs">
+            <NavLink  to="/jobs">
                 <li>jobs</li>
-            </Link>
+            </NavLink>
             |
-            <Link  to="/submit">
+            <NavLink  to="/submit">
                 <li>submit</li>
-            </Link>
+            </NavLink>
         </ul>
     </nav>
         </div>

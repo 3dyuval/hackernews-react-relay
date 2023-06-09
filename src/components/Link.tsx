@@ -22,7 +22,7 @@ export default function Link ({link}: Props) {
 
 const data = useFragment(linkFragment,  link)
 
-   return  <div>
+   return  <div className="app-content">
     <LinkHead node={data} />
     <LinkSubtext totalComments={data.totalComments} id={data.id} />
   </div>
