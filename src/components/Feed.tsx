@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 
-export const feedQuery = graphql`
+export const FeedQuery = graphql`
     query FeedQuery {
       feed {
         edges {
@@ -20,11 +20,11 @@ export const feedQuery = graphql`
 
 export default function Feed () {
   
-  const data = useLazyLoadQuery<FeedQueryType>(feedQuery, {})
+  const data = useLazyLoadQuery<FeedQueryType>(FeedQuery, {})
   
   return <Routes>
       <Route
-        path="/"
+        path="/*"
         element={data && data.feed.edges.map(({node, cursor}) => <Link link={node} key={cursor} />)}
       />
       <Route path="/link/:link" element={<Comments />} />
