@@ -2,7 +2,7 @@
 
 
 
-export default function LinkHead({ node }) {
+export default function LinkHead({ link }) {
 
 
   return (
@@ -12,8 +12,8 @@ export default function LinkHead({ node }) {
       </div>
       <div className="">
           <a
-            id={`up_${node.id}`}
-            href={`vote?id=${node.id}&how=up&goto=news%p=2`}
+            id={`up_${link.id}`}
+            href={`vote?id=${link.id}&how=up&goto=news%p=2`}
           >
             <div className="">
               👆
@@ -22,11 +22,11 @@ export default function LinkHead({ node }) {
       </div>
       <div className="">
         <span>
-          <a href={node.url}>{node.description}</a>
+          <a href={link.url}>{link.description}</a>
           <span className="text-zinc-500">
             {` `}
-            <a href={node.url} target="_blank">
-              <span>({node.url})</span>
+            <a href={link.url} target="_blank">
+              <span>({link.url})</span>
             </a>
           </span>
         </span>

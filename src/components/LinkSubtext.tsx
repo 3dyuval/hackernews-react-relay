@@ -1,20 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { formatDistance } from 'date-fns'
 
+export default ({ link }) => {
 
+  
+    const distance = formatDistance(parseInt(link.createdAt), new Date(), {
+    addSuffix: true,
+  })
 
-export default ({totalComments, id}) => {
-
-    return (
-        <div className="flex text-xs text-zinc-500 [&>*]:mx-1">
-            <Link>
-            hide
-            </Link>
-            <Link>
-            past
-            </Link>
-            <Link to={`/link/${id}`}>
-                {(totalComments === 0) ? 'discuss' : `${totalComments} Comments`}
-                </Link>
-        </div>
-    );
+  return (
+    <div className="flex text-xs text-zinc-500 [&>*]:mx-1">
+      {distance}
+      <Link to="">hide</Link>
+      <Link to="">past</Link>
+      <Link to={`/link/${link.id}`}>
+        {link.totalComments === 0
+          ? 'discuss'
+          : `${link.totalComments} Comments`}
+      </Link>
+    </div>
+  )
 }

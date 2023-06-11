@@ -46,6 +46,7 @@
     description: String!
     url: String!
     comments: CommentConnection
+    createdAt: String!
     totalComments: Int!
     poster: User
   }

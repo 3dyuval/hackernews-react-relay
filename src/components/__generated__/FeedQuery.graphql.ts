@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<131afdd7d66952798c9f53078aa3b733>>
+ * @generated SignedSource<<a3eb678334d52cb456e3dd4dbe81645a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -142,6 +142,13 @@ return {
                     "kind": "ScalarField",
                     "name": "url",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "createdAt",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -155,12 +162,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "126e6df14a86bb2437212fa76708d407",
+    "cacheID": "56404c709c895a46d9f0acb6111e675a",
     "id": null,
     "metadata": {},
     "name": "FeedQuery",
     "operationKind": "query",
-    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n}\n"
+    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
