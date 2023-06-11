@@ -1,7 +1,13 @@
 
 import { Link, NavLink } from 'react-router-dom'
 
-export default function Navigation ({info}: {info: string}) { 
+
+type Props = {
+    info: string
+    actor: any
+}
+
+export default function Navigation ({info, actor}: Props) { 
     
     return  <div className="app-header flex py-1 justify-between px-2  ">
         <div className="left flex flex-col md:flex-row">
@@ -45,9 +51,8 @@ export default function Navigation ({info}: {info: string}) {
         </ul>
     </nav>
         </div>
-  
     <div className="flex">
-    <span>yuvald</span> <span className="accent-teal-900">(1)</span> <Link to='/logout'>logout</Link>
+    <span>{actor?.name}</span> <span className="accent-teal-900">(1)</span> <Link to='/logout'>logout</Link>
     </div>
   </div>
 }
