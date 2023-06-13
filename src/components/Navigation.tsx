@@ -1,4 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 type Props = {
   info: string
@@ -6,6 +8,18 @@ type Props = {
 }
 
 export default function Navigation({ info, actor }: Props) {
+  const [URLSearchParams, setURLSearchParams] = useSearchParams()
+
+  function getToday() {
+    /* set URL search params insted of Route */
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0') // Adding 1 to month since it's zero-based
+    const day = String(currentDate.getDate()).padStart(2, '0')
+
+    return `${year}-${month}-${day}`
+  }
+
   return (
     <div className="app-header flex py-1 justify-between px-2  ">
       <div className="left flex flex-col md:flex-row">
@@ -25,9 +39,9 @@ export default function Navigation({ info, actor }: Props) {
               <li>threads</li>
             </NavLink>
             |
-            <NavLink to="/past">
+            <Link to={"/?day=" + getToday()} className={URLSearchParams.has('day') ? 'text-white' : null}>
               <li>past</li>
-            </NavLink>
+            </Link>
             |
             <NavLink to="/comments">
               <li>comments</li>
@@ -48,6 +62,9 @@ export default function Navigation({ info, actor }: Props) {
             <NavLink to="/submit">
               <li>submit</li>
             </NavLink>
+            <li className="text-white">
+              {URLSearchParams.has('day') && URLSearchParams.get('day')}
+            </li>
           </ul>
         </nav>
       </div>

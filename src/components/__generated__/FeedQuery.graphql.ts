@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a3eb678334d52cb456e3dd4dbe81645a>>
+ * @generated SignedSource<<c585c81929f9cb979630b49d641f588f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,9 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type FeedQuery$variables = {};
+export type FeedQuery$variables = {
+  date?: string | null;
+};
 export type FeedQuery$data = {
   readonly feed: {
     readonly edges: ReadonlyArray<{
@@ -27,7 +29,21 @@ export type FeedQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "date"
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "date",
+    "variableName": "date"
+  }
+],
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -36,14 +52,14 @@ var v0 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "FeedQuery",
     "selections": [
       {
         "alias": null,
-        "args": null,
+        "args": (v1/*: any*/),
         "concreteType": "LinkConnection",
         "kind": "LinkedField",
         "name": "feed",
@@ -57,7 +73,7 @@ return {
             "name": "edges",
             "plural": true,
             "selections": [
-              (v0/*: any*/),
+              (v2/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -86,13 +102,13 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "FeedQuery",
     "selections": [
       {
         "alias": null,
-        "args": null,
+        "args": (v1/*: any*/),
         "concreteType": "LinkConnection",
         "kind": "LinkedField",
         "name": "feed",
@@ -106,7 +122,7 @@ return {
             "name": "edges",
             "plural": true,
             "selections": [
-              (v0/*: any*/),
+              (v2/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -162,16 +178,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "56404c709c895a46d9f0acb6111e675a",
+    "cacheID": "8f2c465ce7e6ba3577f29a819e6aaf26",
     "id": null,
     "metadata": {},
     "name": "FeedQuery",
     "operationKind": "query",
-    "text": "query FeedQuery {\n  feed {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query FeedQuery(\n  $date: String\n) {\n  feed(date: $date) {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f59df962a6f7f0dc50c251739e0bbaa9";
+(node as any).hash = "05580481364c66a3528de854d63f3da6";
 
 export default node;
