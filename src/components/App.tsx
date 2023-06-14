@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { useLazyLoadQuery, graphql } from 'react-relay'
 import { AppQuery as AppQueryType } from './__generated__/AppQuery.graphql'
 import Navigation from '@/components/Navigation'
@@ -24,6 +24,7 @@ const query = graphql`
 `
 
 export default function App() {
+
   const data = useLazyLoadQuery<AppQueryType>(query, {})
   const {info} = data
 

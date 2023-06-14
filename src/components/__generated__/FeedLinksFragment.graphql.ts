@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4f0b3579773f35d87f204beaab54467f>>
+ * @generated SignedSource<<8f03fd52546630c92776542c1b18aeb3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,7 +8,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type FeedLinksFragment$data = {
   readonly feed: {
@@ -18,6 +18,9 @@ export type FeedLinksFragment$data = {
         readonly " $fragmentSpreads": FragmentRefs<"LinkFragment">;
       } | null;
     } | null> | null;
+    readonly pageInfo: {
+      readonly hasNextPage: boolean;
+    };
   };
   readonly " $fragmentType": "FeedLinksFragment";
 };
@@ -26,20 +29,94 @@ export type FeedLinksFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"FeedLinksFragment">;
 };
 
-const node: ReaderFragment = {
-  "argumentDefinitions": [],
+import FeedLinksPaginationQuery_graphql from './FeedLinksPaginationQuery.graphql';
+
+const node: ReaderFragment = (function(){
+var v0 = [
+  "feed"
+];
+return {
+  "argumentDefinitions": [
+    {
+      "defaultValue": 30,
+      "kind": "LocalArgument",
+      "name": "count"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "cursor"
+    },
+    {
+      "defaultValue": "2022-12-12",
+      "kind": "LocalArgument",
+      "name": "date"
+    }
+  ],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": (v0/*: any*/)
+      }
+    ],
+    "refetch": {
+      "connection": {
+        "forward": {
+          "count": "count",
+          "cursor": "cursor"
+        },
+        "backward": null,
+        "path": (v0/*: any*/)
+      },
+      "fragmentPathInResult": [],
+      "operation": FeedLinksPaginationQuery_graphql
+    }
+  },
   "name": "FeedLinksFragment",
   "selections": [
     {
-      "alias": null,
-      "args": null,
+      "alias": "feed",
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "date",
+          "variableName": "date"
+        }
+      ],
       "concreteType": "LinkConnection",
       "kind": "LinkedField",
-      "name": "feed",
+      "name": "__FeedLinksFragment_feed_connection",
       "plural": false,
       "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "kind": "LinkedField",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "hasNextPage",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "endCursor",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
         {
           "alias": null,
           "args": null,
@@ -67,6 +144,13 @@ const node: ReaderFragment = {
                   "args": null,
                   "kind": "FragmentSpread",
                   "name": "LinkFragment"
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "__typename",
+                  "storageKey": null
                 }
               ],
               "storageKey": null
@@ -81,7 +165,8 @@ const node: ReaderFragment = {
   "type": "Query",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "0f94e6e9688d7c456ec7d796d5840273";
+(node as any).hash = "44550c2b95d454ffcbee9b884175bd0c";
 
 export default node;
