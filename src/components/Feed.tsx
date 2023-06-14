@@ -1,12 +1,12 @@
-import { useLazyLoadQuery } from 'react-relay'
+import { useFragment } from 'react-relay'
 import { graphql } from 'relay-runtime'
 import Link from './Link'
-import { FeedQuery as FeedQueryType} from '@relay/FeedQuery.graphql'
 import { useSearchParams } from 'react-router-dom'
+import { FeedLinksFragment$key } from './__generated__/FeedLinksFragment.graphql'
 
-export const FeedQuery = graphql`
-  query FeedQuery ($date: String) {
-    feed( date: $date ) {
+export const FeedLinksFragment = graphql`
+  fragment FeedLinksFragment on Query  {
+    feed {
       edges {
         cursor
         node {
@@ -18,15 +18,15 @@ export const FeedQuery = graphql`
 `
 
 
-export default function Links() {
+export default function Feed({feed}: { feed: FeedLinksFragment$key}) {
   const [URLsearchParams] = useSearchParams()
 
   const date = URLsearchParams.get('day')
 
-  const data = useLazyLoadQuery<FeedQueryType>(FeedQuery, { date })
+  const data = useFragment(FeedLinksFragment, feed)
 
-  return (
-    data &&
-    data.feed.edges.map(({ node, cursor }) => <Link link={node} key={cursor} />)
-  )
+  return (<>
+  {  data &&
+    data.feed.edges.map(({ node, cursor }) => <Link link={node} key={cursor} />)}
+    </>)
 }

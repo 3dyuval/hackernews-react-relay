@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<505a268ff29b09e27cd5303b6d4c6d7f>>
+ * @generated SignedSource<<df3f8a895031467c23edf09362522658>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type AppQuery$variables = {};
 export type AppQuery$data = {
   readonly info: string;
@@ -20,6 +21,7 @@ export type AppQuery$data = {
       readonly name: string | null;
     } | null;
   } | null;
+  readonly " $fragmentSpreads": FragmentRefs<"FeedLinksFragment">;
 };
 export type AppQuery = {
   response: AppQuery$data;
@@ -76,6 +78,11 @@ return {
     "metadata": null,
     "name": "AppQuery",
     "selections": [
+      {
+        "args": null,
+        "kind": "FragmentSpread",
+        "name": "FeedLinksFragment"
+      },
       (v0/*: any*/),
       {
         "alias": null,
@@ -113,6 +120,75 @@ return {
     "kind": "Operation",
     "name": "AppQuery",
     "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "LinkConnection",
+        "kind": "LinkedField",
+        "name": "feed",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "LinkEdge",
+            "kind": "LinkedField",
+            "name": "edges",
+            "plural": true,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Link",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "totalComments",
+                    "storageKey": null
+                  },
+                  (v1/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "description",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "url",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "createdAt",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      },
       (v0/*: any*/),
       {
         "alias": null,
@@ -150,16 +226,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "04d15974a94e9244b4031f68ecb3f7bb",
+    "cacheID": "583ae1475820815ca32fcbdb865ccd2d",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed {\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5c43b18781a10e5dbd42ce3f327d4d28";
+(node as any).hash = "7bbd7e3da946ecdb3b2805cf709b0ffa";
 
 export default node;

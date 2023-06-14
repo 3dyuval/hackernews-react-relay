@@ -8,6 +8,7 @@ import Feed from '@/components/Feed'
 
 const query = graphql`
   query AppQuery {
+    ...FeedLinksFragment
     info
     viewer {
       actor {
@@ -24,15 +25,15 @@ const query = graphql`
 
 export default function App() {
   const data = useLazyLoadQuery<AppQueryType>(query, {})
-  const info = data.info
+  const {info} = data
 
   return (
     <>
       <div className="app">
-        <Navigation info={data.info} actor={data.viewer.actor} />
+        <Navigation info={info} actor={data.viewer.actor} />
         <Suspense>
           <Routes>
-            <Route path="/" element={<Feed feed={data.feed} />} />
+            <Route path="/" element={<Feed feed={data} />} />
             <Route path="/link/:link" element={<Comments />} />
           </Routes>
         </Suspense>
