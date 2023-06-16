@@ -20,3 +20,12 @@ body {
 .app-content {
   background: rgb(246, 246, 239);
 }
+
+textarea {
+  font-family: monospace;
+  font-size: 10pt;
+  resize: both;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.95)
+}

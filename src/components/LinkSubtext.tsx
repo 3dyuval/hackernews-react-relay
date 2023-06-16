@@ -3,7 +3,7 @@ import { formatDistance } from 'date-fns'
 import { LinkFragment$data } from './__generated__/LinkFragment.graphql'
 
 type Props = {
-  curosr: string
+  cursor: string
   link: LinkFragment$data
 }
 
