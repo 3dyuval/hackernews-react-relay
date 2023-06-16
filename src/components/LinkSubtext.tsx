@@ -3,11 +3,10 @@ import { formatDistance } from 'date-fns'
 import { LinkFragment$data } from './__generated__/LinkFragment.graphql'
 
 type Props = {
-  cursor: string
   link: LinkFragment$data
 }
 
-export default function LinkSubtext ({ link, cursor }: Props) {
+export default function LinkSubtext ({ link}: Props) {
   const distance = formatDistance(parseInt(link.createdAt), new Date(), {
     addSuffix: true,
   })
@@ -17,7 +16,7 @@ export default function LinkSubtext ({ link, cursor }: Props) {
       {distance}
       <Link to="">hide</Link>
       <Link to="">past</Link>
-      <Link to={`/link/${cursor}`}>
+      <Link to={'/link/' + btoa(JSON.stringify({link: Number.parseInt(link.id)}))}>
         {link.totalComments === 0
           ? 'discuss'
           : `${link.totalComments} Comments`}

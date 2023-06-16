@@ -3,7 +3,7 @@ import LinkHead from '@/components/LinkHead'
 import { graphql, useFragment } from 'react-relay'
 import { LinkFragment$key } from './__generated__/LinkFragment.graphql'
 
-const linkFragment = graphql`
+const LinkFragment = graphql`
   fragment LinkFragment on Link {
     totalComments
     id
@@ -15,16 +15,15 @@ const linkFragment = graphql`
 
 type Props = {
   link: LinkFragment$key
-  curosr: string
 }
 
-export default function Link({ link, cursor}: Props) {
-  const data = useFragment(linkFragment, link)
+export default function Link({ link}: Props) {
+  const data = useFragment(LinkFragment, link)
 
   return (
     <div className="app-content">
       <LinkHead link={data} />
-      <LinkSubtext cursor={cursor} totalComments={data.totalComments} id={data.id} link={data} />
+      <LinkSubtext totalComments={data.totalComments} id={data.id} link={data} />
     </div>
   )
 }
