@@ -78,11 +78,12 @@ export default function Navigation({ info, actor }: Props) {
           </ul>
         </nav>
       </div>
-      <div className="flex">
+      <div className="space-x-1">
         {isAuthenticated 
-        ? <span>{user && JSON.stringify(user)}<span className="accent-teal-900">(1)</span>
+        ? <><span>{user.email}</span>
+        <span className="accent-teal-900">(1)</span>
         <span role="button" onClick={logout}>Logout</span>
-        </span>
+        </>
          :<span role="button" onClick={login} >Login</span>}
       </div>
     </div>

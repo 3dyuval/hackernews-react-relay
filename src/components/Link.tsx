@@ -15,15 +15,16 @@ const linkFragment = graphql`
 
 type Props = {
   link: LinkFragment$key
+  curosr: string
 }
 
-export default function Link({ link }: Props) {
+export default function Link({ link, cursor}: Props) {
   const data = useFragment(linkFragment, link)
 
   return (
     <div className="app-content">
       <LinkHead link={data} />
-      <LinkSubtext totalComments={data.totalComments} id={data.id} link={data} />
+      <LinkSubtext cursor={cursor} totalComments={data.totalComments} id={data.id} link={data} />
     </div>
   )
 }

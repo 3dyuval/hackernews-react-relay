@@ -2,8 +2,11 @@ import { useParams } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import { graphql } from 'relay-runtime'
 import { CommentsQuery as CommentsQueryType } from '@relay/CommentsQuery.graphql'
-const linkCommentsQuery = graphql`
+
+
+const LinkCommentsQuery = graphql`
   query CommentsQuery($id: ID!) {
+    
     link(id: $id) {
       totalComments
       description
@@ -25,7 +28,7 @@ const linkCommentsQuery = graphql`
 export default function Comments() {
   const { link } = useParams()
 
-  const data = useLazyLoadQuery<CommentsQueryType>(linkCommentsQuery, {
+  const data = useLazyLoadQuery<CommentsQueryType>(LinkCommentsQuery, {
     id: link,
   })
 

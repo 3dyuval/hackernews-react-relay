@@ -45,7 +45,7 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
     <>
       {edges &&
         edges.map(({ node, cursor }) => (
-          <Link link={node} key={cursor} />
+          <Link link={node} key={cursor} cursor={cursor} />
         ))}
       {hasNextPage && (
         <button onClick={onLoadMore}> Load more... </button>

@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 import { formatDistance } from 'date-fns'
+import { LinkFragment$data } from './__generated__/LinkFragment.graphql'
 
-export default ({ link }) => {
+type Props = {
+  curosr: string
+  link: LinkFragment$data
+}
 
-  
-    const distance = formatDistance(parseInt(link.createdAt), new Date(), {
+export default function LinkSubtext ({ link, cursor }: Props) {
+  const distance = formatDistance(parseInt(link.createdAt), new Date(), {
     addSuffix: true,
   })
 
@@ -13,7 +17,7 @@ export default ({ link }) => {
       {distance}
       <Link to="">hide</Link>
       <Link to="">past</Link>
-      <Link to={`/link/${link.id}`}>
+      <Link to={`/link/${cursor}`}>
         {link.totalComments === 0
           ? 'discuss'
           : `${link.totalComments} Comments`}
