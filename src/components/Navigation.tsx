@@ -1,6 +1,13 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import {
+  FusionAuthLoginButton,
+  FusionAuthLogoutButton,
+  RequireAuth,
+  useFusionAuth
+} from '@fusionauth/react-sdk';
+
 
 type Props = {
   info: string
@@ -10,6 +17,9 @@ type Props = {
 export default function Navigation({ info, actor }: Props) {
   const [URLSearchParams, setURLSearchParams] = useSearchParams()
 
+  const { isAuthenticated, user , logout, login} = useFusionAuth();
+
+  
   function getToday() {
     /* set URL search params insted of Route */
     const currentDate = new Date()
@@ -69,8 +79,11 @@ export default function Navigation({ info, actor }: Props) {
         </nav>
       </div>
       <div className="flex">
-        <span>{actor?.name}</span> <span className="accent-teal-900">(1)</span>{' '}
-        <Link to="/logout">logout</Link>
+        {isAuthenticated 
+        ? <span>{user && JSON.stringify(user)}<span className="accent-teal-900">(1)</span>
+        <span role="button" onClick={logout}>Logout</span>
+        </span>
+         :<span role="button" onClick={login} >Login</span>}
       </div>
     </div>
   )
