@@ -84,7 +84,7 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
         <div className="text-zinc-600 text-md p-4">
           <p> Stories from {date} </p>
           <p>
-            Go back a <a role="button" sonClick={() => changeDate.sub('days')}>day</a>,{' '}
+            Go back a <a role="button" onClick={() => changeDate.sub('days')}>day</a>,{' '}
             <a role="button" onClick={() => changeDate.sub('months')}>month</a>, or{' '}
             <a role="button" onClick={() => changeDate.sub('years')}>year</a>. Go forward a{' '}
             <a role="button" onClick={() => changeDate.add('days')}>day</a> or{' '}
