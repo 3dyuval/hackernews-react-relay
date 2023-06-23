@@ -69,7 +69,7 @@ export default function Navigation({ info, actor }: Props) {
               <li>jobs</li>
             </NavLink>
             |
-            <NavLink to="/submit">
+            <NavLink to="/post-link">
               <li>submit</li>
             </NavLink>
             <li className="text-white">

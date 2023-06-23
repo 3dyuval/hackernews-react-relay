@@ -5,6 +5,8 @@ import Navigation from '@/components/Navigation'
 import { Routes, Route } from 'react-router-dom'
 import Comments from '@/components/Comments'
 import Feed from '@/components/Feed'
+import PostLink from './PostLink'
+
 
 const query = graphql`
   query AppQuery {
@@ -36,6 +38,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Feed feed={data} />} />
             <Route path="/link/:link" element={<Comments />} />
+            <Route path="/post-link" element={<PostLink />} />
           </Routes>
         </Suspense>
       </div>
