@@ -1,7 +1,7 @@
 import { usePaginationFragment } from 'react-relay'
 import { graphql } from 'relay-runtime'
 import Link from './Link'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, matchPath, useMatch } from 'react-router-dom'
 import { FeedLinksFragment$key } from './__generated__/FeedLinksFragment.graphql'
 import { useEffect } from 'react'
 
@@ -11,9 +11,10 @@ export const FeedLinksFragment = graphql`
   @argumentDefinitions(
     cursor: { type: "String" }
     count: { type: "Int", defaultValue: 30 },
-    date: { type: "String", defaultValue: "2022-12-12" }
+    day: { type: "String", defaultValue: ""},
+    orderBy: {type: "String", defaultValue: "votes"}
   ) {
-    feed(after: $cursor, first: $count, date: $date)
+    feed(after: $cursor, first: $count, date: $day, orderBy: $orderBy)
       @connection(key: "FeedLinksFragment_feed") {
       pageInfo {
         hasNextPage
@@ -30,7 +31,8 @@ export const FeedLinksFragment = graphql`
 
 export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
   const [URLsearchParams] = useSearchParams()
-  const date = URLsearchParams.get('day')
+  const day = URLsearchParams.get('day')
+  const orderByDate = useMatch('new')
 
   const { data, loadNext, refetch } = usePaginationFragment(FeedLinksFragment, feed)
 
@@ -38,8 +40,12 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
   const onLoadMore = () => loadNext(30)
 
   useEffect(() => {
-    refetch({date})
-  }, [date, refetch])
+    let orderBy = 'votes'
+    if (orderByDate) {
+      orderBy = 'date'
+    }
+    refetch({day, orderBy})
+  }, [day, refetch, orderByDate])
 
   return (
     <>

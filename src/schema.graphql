@@ -76,7 +76,7 @@
     viewer: Viewer
     node(id: ID!): Node 
     info: String!
-    feed(first: Int, after: String,  date: String): LinkConnection!
+    feed(first: Int, after: String, date: String, orderBy: String): LinkConnection!
     comment(id: ID!): Comment
     link(id: ID!): Link
     topic(id: String!): Topic

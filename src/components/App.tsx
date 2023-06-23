@@ -36,7 +36,7 @@ export default function App() {
         <Navigation info={info} actor={data.viewer.actor} />
         <Suspense>
           <Routes>
-            <Route path="/" element={<Feed feed={data} />} />
+            <Route path="/*" element={<Feed feed={data} />} />
             <Route path="/link/:link" element={<Comments />} />
             <Route path="/post-link" element={<PostLink />} />
           </Routes>

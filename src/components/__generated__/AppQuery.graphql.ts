@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7a906c90182d9d7f74352d115ede3a4d>>
+ * @generated SignedSource<<1f4067d52462242ec296497151170d4a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -75,12 +75,17 @@ v5 = [
   {
     "kind": "Literal",
     "name": "date",
-    "value": "2022-12-12"
+    "value": ""
   },
   {
     "kind": "Literal",
     "name": "first",
     "value": 30
+  },
+  {
+    "kind": "Literal",
+    "name": "orderBy",
+    "value": "votes"
   }
 ],
 v6 = {
@@ -232,13 +237,14 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "feed(date:\"2022-12-12\",first:30)"
+        "storageKey": "feed(date:\"\",first:30,orderBy:\"votes\")"
       },
       {
         "alias": null,
         "args": (v5/*: any*/),
         "filters": [
-          "date"
+          "date",
+          "orderBy"
         ],
         "handle": "connection",
         "key": "FeedLinksFragment_feed",
@@ -276,12 +282,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "659942452f2b1731c422b219a544eb9d",
+    "cacheID": "be36eb76c92fa1cd122c575176f8d1f5",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, date: \"2022-12-12\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, date: \"\", orderBy: \"votes\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

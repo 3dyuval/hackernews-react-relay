@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8f03fd52546630c92776542c1b18aeb3>>
+ * @generated SignedSource<<f24884c6c498057210ee63701f07e935>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -48,9 +48,14 @@ return {
       "name": "cursor"
     },
     {
-      "defaultValue": "2022-12-12",
+      "defaultValue": "",
       "kind": "LocalArgument",
-      "name": "date"
+      "name": "day"
+    },
+    {
+      "defaultValue": "votes",
+      "kind": "LocalArgument",
+      "name": "orderBy"
     }
   ],
   "kind": "Fragment",
@@ -84,7 +89,12 @@ return {
         {
           "kind": "Variable",
           "name": "date",
-          "variableName": "date"
+          "variableName": "day"
+        },
+        {
+          "kind": "Variable",
+          "name": "orderBy",
+          "variableName": "orderBy"
         }
       ],
       "concreteType": "LinkConnection",
@@ -167,6 +177,6 @@ return {
 };
 })();
 
-(node as any).hash = "44550c2b95d454ffcbee9b884175bd0c";
+(node as any).hash = "e2f11e0e0472ec1217c879ea206588c1";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f506e54251ba97aa3d91dcd39285191d>>
+ * @generated SignedSource<<4ea903361708af979e4b6ad0154d4bc7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,8 @@ import { FragmentRefs } from "relay-runtime";
 export type FeedLinksPaginationQuery$variables = {
   count?: number | null;
   cursor?: string | null;
-  date?: string | null;
+  day?: string | null;
+  orderBy?: string | null;
 };
 export type FeedLinksPaginationQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"FeedLinksFragment">;
@@ -36,15 +37,20 @@ var v0 = [
     "name": "cursor"
   },
   {
-    "defaultValue": "2022-12-12",
+    "defaultValue": "",
     "kind": "LocalArgument",
-    "name": "date"
+    "name": "day"
+  },
+  {
+    "defaultValue": "votes",
+    "kind": "LocalArgument",
+    "name": "orderBy"
   }
 ],
 v1 = {
   "kind": "Variable",
-  "name": "date",
-  "variableName": "date"
+  "name": "orderBy",
+  "variableName": "orderBy"
 },
 v2 = [
   {
@@ -52,12 +58,17 @@ v2 = [
     "name": "after",
     "variableName": "cursor"
   },
-  (v1/*: any*/),
+  {
+    "kind": "Variable",
+    "name": "date",
+    "variableName": "day"
+  },
   {
     "kind": "Variable",
     "name": "first",
     "variableName": "count"
-  }
+  },
+  (v1/*: any*/)
 ];
 return {
   "fragment": {
@@ -77,6 +88,11 @@ return {
             "kind": "Variable",
             "name": "cursor",
             "variableName": "cursor"
+          },
+          {
+            "kind": "Variable",
+            "name": "day",
+            "variableName": "day"
           },
           (v1/*: any*/)
         ],
@@ -204,7 +220,8 @@ return {
         "alias": null,
         "args": (v2/*: any*/),
         "filters": [
-          "date"
+          "date",
+          "orderBy"
         ],
         "handle": "connection",
         "key": "FeedLinksFragment_feed",
@@ -214,16 +231,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "bb3b0c87530c9cfd79a8d2320d97c8e1",
+    "cacheID": "5228de626f18c013e281a855dcfa04fe",
     "id": null,
     "metadata": {},
     "name": "FeedLinksPaginationQuery",
     "operationKind": "query",
-    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $date: String = \"2022-12-12\"\n) {\n  ...FeedLinksFragment_1j6IxY\n}\n\nfragment FeedLinksFragment_1j6IxY on Query {\n  feed(after: $cursor, first: $count, date: $date) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $day: String = \"\"\n  $orderBy: String = \"votes\"\n) {\n  ...FeedLinksFragment_3DpCNM\n}\n\nfragment FeedLinksFragment_3DpCNM on Query {\n  feed(after: $cursor, first: $count, date: $day, orderBy: $orderBy) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "44550c2b95d454ffcbee9b884175bd0c";
+(node as any).hash = "e2f11e0e0472ec1217c879ea206588c1";
 
 export default node;
