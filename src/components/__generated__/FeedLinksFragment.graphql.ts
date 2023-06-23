@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f24884c6c498057210ee63701f07e935>>
+ * @generated SignedSource<<2484cd12714d8fb9385ea4a537676982>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -48,12 +48,12 @@ return {
       "name": "cursor"
     },
     {
-      "defaultValue": "",
+      "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "day"
+      "name": "date"
     },
     {
-      "defaultValue": "votes",
+      "defaultValue": null,
       "kind": "LocalArgument",
       "name": "orderBy"
     }
@@ -89,7 +89,7 @@ return {
         {
           "kind": "Variable",
           "name": "date",
-          "variableName": "day"
+          "variableName": "date"
         },
         {
           "kind": "Variable",
@@ -177,6 +177,6 @@ return {
 };
 })();
 
-(node as any).hash = "e2f11e0e0472ec1217c879ea206588c1";
+(node as any).hash = "94d832387243555be12c28b9197e5bb5";
 
 export default node;

@@ -15,9 +15,7 @@ export default function LinkHead({ link }) {
             id={`up_${link.id}`}
             href={`vote?id=${link.id}&how=up&goto=news%p=2`}
           >
-            <div className="">
-              👆
-            </div>
+            <div className="votearrow" /> 
           </a>
       </div>
       <div className="">

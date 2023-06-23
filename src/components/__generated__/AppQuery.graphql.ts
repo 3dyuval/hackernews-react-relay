@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1f4067d52462242ec296497151170d4a>>
+ * @generated SignedSource<<181c62d4aec30a5bdaf2631c86344f3b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -74,18 +74,8 @@ v4 = {
 v5 = [
   {
     "kind": "Literal",
-    "name": "date",
-    "value": ""
-  },
-  {
-    "kind": "Literal",
     "name": "first",
     "value": 30
-  },
-  {
-    "kind": "Literal",
-    "name": "orderBy",
-    "value": "votes"
   }
 ],
 v6 = {
@@ -237,7 +227,7 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "feed(date:\"\",first:30,orderBy:\"votes\")"
+        "storageKey": "feed(first:30)"
       },
       {
         "alias": null,
@@ -282,12 +272,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "be36eb76c92fa1cd122c575176f8d1f5",
+    "cacheID": "b1b2bb3daa860c58abd4a10ec0892b13",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, date: \"\", orderBy: \"votes\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
