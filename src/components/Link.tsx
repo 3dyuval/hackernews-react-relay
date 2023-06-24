@@ -15,14 +15,15 @@ const LinkFragment = graphql`
 
 type Props = {
   link: LinkFragment$key
+  index: number
 }
 
-export default function Link({ link}: Props) {
+export default function Link({ link , index}: Props) {
   const data = useFragment(LinkFragment, link)
 
   return (
     <div className="app-content">
-      <LinkHead link={data} />
+      <LinkHead link={data} index={index} />
       <LinkSubtext totalComments={data.totalComments} id={data.id} link={data} />
     </div>
   )

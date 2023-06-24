@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2484cd12714d8fb9385ea4a537676982>>
+ * @generated SignedSource<<18ab6b873ad4918e37229544d6623b86>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -53,7 +53,7 @@ return {
       "name": "date"
     },
     {
-      "defaultValue": null,
+      "defaultValue": "rank",
       "kind": "LocalArgument",
       "name": "orderBy"
     }
@@ -177,6 +177,6 @@ return {
 };
 })();
 
-(node as any).hash = "94d832387243555be12c28b9197e5bb5";
+(node as any).hash = "e258d0e3c0dbca2db6acbdec12d0b6aa";
 
 export default node;

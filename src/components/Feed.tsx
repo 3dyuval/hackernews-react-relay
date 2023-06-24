@@ -12,7 +12,7 @@ export const FeedLinksFragment = graphql`
     cursor: { type: "String" }
     count: { type: "Int", defaultValue: 30 }
     date: { type: "String", defaultValue: null }
-    orderBy: { type: "String", defaultValue: null }
+    orderBy: { type: "String", defaultValue: "rank" }
   ) {
     feed(after: $cursor, first: $count, date: $date, orderBy: $orderBy)
       @connection(key: "FeedLinksFragment_feed") {
@@ -93,8 +93,8 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
         </div>
       )}
       {edges &&
-        edges.map(({ node, cursor }) => (
-          <Link link={node} key={cursor} cursor={cursor} />
+        edges.map(({ node, cursor }, index) => (
+          <Link link={node} key={cursor} cursor={cursor} index={index} />
         ))}
       {hasNextPage && <button onClick={onLoadMore}> Load more... </button>}
     </>

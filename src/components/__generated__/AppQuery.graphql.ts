@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<181c62d4aec30a5bdaf2631c86344f3b>>
+ * @generated SignedSource<<b0a4f3af0365cd3e8abe24080a0041fa>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -76,6 +76,11 @@ v5 = [
     "kind": "Literal",
     "name": "first",
     "value": 30
+  },
+  {
+    "kind": "Literal",
+    "name": "orderBy",
+    "value": "rank"
   }
 ],
 v6 = {
@@ -227,7 +232,7 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "feed(first:30)"
+        "storageKey": "feed(first:30,orderBy:\"rank\")"
       },
       {
         "alias": null,
@@ -272,12 +277,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b1b2bb3daa860c58abd4a10ec0892b13",
+    "cacheID": "52b3079945b4987e63e5b4ee8e06f20f",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

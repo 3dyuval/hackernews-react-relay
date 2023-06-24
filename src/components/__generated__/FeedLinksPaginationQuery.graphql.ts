@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a5cb2f1c1792008f1f99d9df47620d70>>
+ * @generated SignedSource<<dc15723b390a744089b0d326c19eb669>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -42,7 +42,7 @@ var v0 = [
     "name": "date"
   },
   {
-    "defaultValue": null,
+    "defaultValue": "rank",
     "kind": "LocalArgument",
     "name": "orderBy"
   }
@@ -228,16 +228,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e61795e166c162f539e1dfa8907cfbe9",
+    "cacheID": "20e2fd2f1f72d7d1dd99475633769886",
     "id": null,
     "metadata": {},
     "name": "FeedLinksPaginationQuery",
     "operationKind": "query",
-    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $date: String = null\n  $orderBy: String = null\n) {\n  ...FeedLinksFragment_2IkXLK\n}\n\nfragment FeedLinksFragment_2IkXLK on Query {\n  feed(after: $cursor, first: $count, date: $date, orderBy: $orderBy) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $date: String = null\n  $orderBy: String = \"rank\"\n) {\n  ...FeedLinksFragment_2IkXLK\n}\n\nfragment FeedLinksFragment_2IkXLK on Query {\n  feed(after: $cursor, first: $count, date: $date, orderBy: $orderBy) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "94d832387243555be12c28b9197e5bb5";
+(node as any).hash = "e258d0e3c0dbca2db6acbdec12d0b6aa";
 
 export default node;

@@ -22,6 +22,9 @@ export default function PostLink() {
         url: form.get('url'),
         description: form.get('description'),
       },
+      onError: (error) => {
+        alert(error)
+      },
       onCompleted: ({ postLink }) => {
         navigate(`/link/${postLink.id}`)
       },
@@ -31,7 +34,7 @@ export default function PostLink() {
   return (
     <>
       <form
-        className={`flex-column ${isMutating ? 'opacity-60' : 'opacity-100'}`}
+        className={`flex-column gap-4 p-4 ${isMutating ? 'opacity-60' : 'opacity-100'}`}
         onSubmit={onSubmit}
       >
         <div className="flex-row">
