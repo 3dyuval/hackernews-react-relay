@@ -13,13 +13,36 @@
 
   --hackernews-color-neutral: #666666;
 
-  --alert-color-primary: #3578e5;
-  --alert-color-secondary: #ebedf0;
-  --alert-color-success: #00a400;
-  --alert-color-info: #54c7ec;
+  --alert-color-info: #3578e5;
+  --alert-color-info-secondary: #54c7ec;
+  
+  --alert-color-default: #ebedf0;
+  --alert-color-success: #1f966b;
   --alert-color-warning: #ffba00;
   --alert-color-danger: #fa383e;
 }
+
+.notistack-MuiContent-default {
+  background-color: var(--alert-color-default);
+}
+.notistack-MuiContent-success {
+  background-color: var(--alert-color-success);
+}
+.notistack-MuiContent-error {
+  background-color: var(--alert-color-danger);
+}
+.notistack-MuiContent-info {
+  background-color: var(--alert-color-info);
+}
+.notistack-MuiContent-warning {
+  background-color: var(--alert-color-warning);
+}
+
+
+
+
+
+
 body {
   font-size: 14px;
 }

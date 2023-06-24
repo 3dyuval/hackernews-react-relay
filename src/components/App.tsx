@@ -7,7 +7,6 @@ import Comments from '@/components/Comments'
 import Feed from '@/components/Feed'
 import PostLink from './PostLink'
 
-
 const query = graphql`
   query AppQuery {
     ...FeedLinksFragment
