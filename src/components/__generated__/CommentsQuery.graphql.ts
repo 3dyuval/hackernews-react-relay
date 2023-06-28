@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<9fa98dbbd0bc646bfd206380f0a62abc>>
+ * @generated SignedSource<<c9f69e0ac1cdcd5ac0e556c135b20581>>
+ * @relayHash cbad50e2d2970b9276b6b82156f1eea2
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID 70ed1eb9263e4c0faf4ad637adaaebe342c5eff7b84f6742e7496248b2278fd7
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
@@ -172,12 +175,11 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cbad50e2d2970b9276b6b82156f1eea2",
-    "id": null,
+    "id": "70ed1eb9263e4c0faf4ad637adaaebe342c5eff7b84f6742e7496248b2278fd7",
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": null
   }
 };
 })();

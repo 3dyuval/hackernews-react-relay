@@ -7,5 +7,9 @@
     "**/__mocks__/**",
     "**/__generated__/**"
   ],
-  "eagerEsModules": true
+  "eagerEsModules": true,
+  "persistConfig": {
+    "file": "../hackernews-node-ts/persisted_queries.json",
+    "algorithm": "SHA256"
+  }
 }

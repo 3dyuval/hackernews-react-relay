@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<b0a4f3af0365cd3e8abe24080a0041fa>>
+ * @generated SignedSource<<20c5345647d29ea984d9510e638beb84>>
+ * @relayHash 52b3079945b4987e63e5b4ee8e06f20f
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID 2691c4254d9191e0f0f99903ba733a509801b6ded6f07ce26ce75ee5dbcf3e4c
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
@@ -277,12 +280,11 @@ return {
     ]
   },
   "params": {
-    "cacheID": "52b3079945b4987e63e5b4ee8e06f20f",
-    "id": null,
+    "id": "2691c4254d9191e0f0f99903ba733a509801b6ded6f07ce26ce75ee5dbcf3e4c",
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": null
   }
 };
 })();

@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<0aacc6caacc5403ccbfa79215c5fefdf>>
+ * @generated SignedSource<<45c42381b2991decf44fcf4a43312fa7>>
+ * @relayHash dce562b240e60e6fc3c43b4ab7e0b7e6
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -7,6 +8,8 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
+
+// @relayRequestID ea2a4b3e2fa33409a28e20cb05c54a5befe363fc706b558058ab137108e15522
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type PostLinkMutation$variables = {
@@ -89,12 +92,11 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "dce562b240e60e6fc3c43b4ab7e0b7e6",
-    "id": null,
+    "id": "ea2a4b3e2fa33409a28e20cb05c54a5befe363fc706b558058ab137108e15522",
     "metadata": {},
     "name": "PostLinkMutation",
     "operationKind": "mutation",
-    "text": "mutation PostLinkMutation(\n  $url: String!\n  $description: String!\n) {\n  postLink(url: $url, description: $description) {\n    id\n  }\n}\n"
+    "text": null
   }
 };
 })();
