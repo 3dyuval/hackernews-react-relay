@@ -49,7 +49,7 @@ export default function PostLink() {
             type="url"
             name="url"
             id="url"
-            defaultValue="http://yuval.live/"
+            defaultValue=""
             required={true}
           />
         </div>
@@ -59,13 +59,13 @@ export default function PostLink() {
             type="text"
             name="description"
             id="description"
-            defaultValue="Yuval"
+            defaultValue=""
             required={true}
             minLength={16}
             maxLength={80}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button>Submit</button>
       </form>
     </>
   )
