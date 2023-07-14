@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a9f3416c70ce52bc76b671e7714d5ed4>>
+ * @generated SignedSource<<a948691def70ad185ba738efd1b7f79b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type CommentsMutation$variables = {
   body: string;
   link: string;
+  parentId?: string | null;
 };
 export type CommentsMutation$data = {
   readonly postCommentOnLink: {
@@ -34,7 +35,12 @@ v1 = {
   "kind": "LocalArgument",
   "name": "link"
 },
-v2 = [
+v2 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "parentId"
+},
+v3 = [
   {
     "alias": null,
     "args": [
@@ -47,6 +53,11 @@ v2 = [
         "kind": "Variable",
         "name": "linkId",
         "variableName": "link"
+      },
+      {
+        "kind": "Variable",
+        "name": "parentId",
+        "variableName": "parentId"
       }
     ],
     "concreteType": "Comment",
@@ -69,12 +80,13 @@ return {
   "fragment": {
     "argumentDefinitions": [
       (v0/*: any*/),
-      (v1/*: any*/)
+      (v1/*: any*/),
+      (v2/*: any*/)
     ],
     "kind": "Fragment",
     "metadata": null,
     "name": "CommentsMutation",
-    "selections": (v2/*: any*/),
+    "selections": (v3/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
@@ -82,23 +94,24 @@ return {
   "operation": {
     "argumentDefinitions": [
       (v1/*: any*/),
-      (v0/*: any*/)
+      (v0/*: any*/),
+      (v2/*: any*/)
     ],
     "kind": "Operation",
     "name": "CommentsMutation",
-    "selections": (v2/*: any*/)
+    "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "0286eb04016900b551fa0fb0c9fbac6a",
+    "cacheID": "50418516fbed569043a758b8604e6c58",
     "id": null,
     "metadata": {},
     "name": "CommentsMutation",
     "operationKind": "mutation",
-    "text": "mutation CommentsMutation(\n  $link: ID!\n  $body: String!\n) {\n  postCommentOnLink(linkId: $link, body: $body) {\n    id\n  }\n}\n"
+    "text": "mutation CommentsMutation(\n  $link: ID!\n  $body: String!\n  $parentId: String\n) {\n  postCommentOnLink(linkId: $link, body: $body, parentId: $parentId) {\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ba1da09e15362b449e864add370bbf22";
+(node as any).hash = "1575f115eebb79f7cc458061f956ab12";
 
 export default node;

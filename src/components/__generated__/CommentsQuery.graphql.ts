@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9fa98dbbd0bc646bfd206380f0a62abc>>
+ * @generated SignedSource<<c740460050ef9acc95f4ed4633eaa1ac>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,6 +20,7 @@ export type CommentsQuery$data = {
         readonly node: {
           readonly body: string;
           readonly id: string;
+          readonly parentId: string | null;
         } | null;
       } | null> | null;
     } | null;
@@ -83,6 +84,13 @@ v3 = {
               "args": null,
               "kind": "ScalarField",
               "name": "body",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "parentId",
               "storageKey": null
             }
           ],
@@ -172,16 +180,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cbad50e2d2970b9276b6b82156f1eea2",
+    "cacheID": "0ccbbf5374db107b3e4e56bec2708a50",
     "id": null,
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query CommentsQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "05f7bda64541447634a6b90623e50bfe";
+(node as any).hash = "7f91a261af2b86d190b1a1be663d0738";
 
 export default node;

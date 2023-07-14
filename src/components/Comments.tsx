@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import {useState} from 'react'
 import { useLazyLoadQuery, useMutation } from 'react-relay'
 import { graphql } from 'relay-runtime'
 import { CommentsQuery as CommentsQueryType } from '@relay/CommentsQuery.graphql'
@@ -15,6 +16,7 @@ const LinkCommentsQuery = graphql`
           node {
             id
             body
+            parentId
           }
         }
       }
@@ -22,14 +24,15 @@ const LinkCommentsQuery = graphql`
   }
 `
 const CommentsMutation = graphql`
-  mutation CommentsMutation($link: ID!, $body: String!) {
-    postCommentOnLink(linkId: $link, body: $body) {
+  mutation CommentsMutation($link: ID!, $body: String!, $parentId: String) {
+    postCommentOnLink(linkId: $link, body: $body, parentId: $parentId) {
       id
     }
   }
 `
 
 export default function Comments() {
+  const [replying, setReplying] = useState(null)
   const { link } = useParams()
 
   const data = useLazyLoadQuery<CommentsQueryType>(LinkCommentsQuery, {
@@ -52,9 +55,11 @@ export default function Comments() {
       variables: {
         body: form.get('commentText'),
         link,
+        parentId: replying
       },
       onCompleted: () => {
-        enqueueSnackbar('Success', { variant: 'sucess' })
+        setReplying(null)
+        enqueueSnackbar('Success', {variant: 'info'})
       },
       onError: () => {
         enqueueSnackbar('Error', { variant: 'error' })
@@ -62,10 +67,29 @@ export default function Comments() {
     })
   }
 
+
+  function sort(data: CommentsQueryType['response']) {
+    const nodes = structuredClone(Object.values(data.link.comments.edges).map(e => e.node))
+    for (const node of nodes) {
+      if (node.parentId) {
+        const parentIndex = nodes.findIndex(i => i.id === node.parentId)
+        const childIndex = nodes.findIndex(i => i.id === node.id)
+        const [splicedChild] = nodes.splice(childIndex, 1)
+        //@ts-ignore
+        splicedChild.indent = 1
+        nodes.splice(parentIndex + 1, 0, splicedChild )
+      }
+    }
+    return nodes
+  }
+
   return (
     <div className="app-content">
       <div className="mx-8 py-2 space-y-2">
-        <Link link={data.link} index={0} />
+        {
+        !replying ? <Link link={data.link} index={0} />
+        : (<p> {data.link.comments.edges.find(edge => edge.node.id === replying)?.node.body} </p>)
+      }
         <form
           onSubmit={onSubmit}
           className="flex flex-col justify-start comment-section"
@@ -88,9 +112,15 @@ export default function Comments() {
           </button>
         </form>
         <br />
-        {data &&
-          data.link.comments.edges.map(({ node }) => (
-            <p key={node.id}>{node.body}</p>
+        {data && replying === null &&
+          sort(data).map((node, index) => (
+            <div style={{paddingLeft: `${node.indent * 8}px`}} key={index}>
+              <p>{node.body}</p>
+              <span
+              onClick={() => setReplying(node.id)}
+              className="text-xs text-zinc-500 [&>*]:mx-1"
+              role="button">reply</span>
+            </div>
           ))}
       </div>
     </div>
