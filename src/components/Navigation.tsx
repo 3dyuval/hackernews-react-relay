@@ -7,14 +7,21 @@ import {
   RequireAuth,
   useFusionAuth
 } from '@fusionauth/react-sdk';
+import { graphql } from 'relay-runtime';
+import { useFragment } from 'react-relay';
 
 
 type Props = {
   info: string
-  actor: any
+  viewer: {
+    score: number
+    name?: string
+  }
 }
 
-export default function Navigation({ info, actor }: Props) {
+export default function Navigation({ info, viewer }: Props) {
+
+
   const [URLSearchParams, setURLSearchParams] = useSearchParams()
 
   const { isAuthenticated, user , logout, login} = useFusionAuth();
@@ -81,7 +88,7 @@ export default function Navigation({ info, actor }: Props) {
       <div className="space-x-1">
         {isAuthenticated 
         ? <><span>{user.email}</span>
-        <span className="accent-teal-900">(1)</span>
+        <span className="accent-teal-900">({viewer.score})</span>
         <span role="button" onClick={logout}>Logout</span>
         </>
          :<span role="button" onClick={login} >Login</span>}

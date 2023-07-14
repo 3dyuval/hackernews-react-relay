@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b0a4f3af0365cd3e8abe24080a0041fa>>
+ * @generated SignedSource<<bdf0de4396c2f46bd8956d5729066724>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,12 +14,8 @@ export type AppQuery$variables = {};
 export type AppQuery$data = {
   readonly info: string;
   readonly viewer: {
-    readonly actor: {
-      readonly email?: string | null;
-      readonly id: string;
-      readonly joined: string | null;
-      readonly name: string | null;
-    } | null;
+    readonly name: string | null;
+    readonly score: number | null;
   } | null;
   readonly " $fragmentSpreads": FragmentRefs<"FeedLinksFragment">;
 };
@@ -39,39 +35,29 @@ var v0 = {
 v1 = {
   "alias": null,
   "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-},
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "name",
-  "storageKey": null
-},
-v3 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "joined",
-  "storageKey": null
-},
-v4 = {
-  "kind": "InlineFragment",
+  "concreteType": "Viewer",
+  "kind": "LinkedField",
+  "name": "viewer",
+  "plural": false,
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "email",
+      "name": "score",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "name",
       "storageKey": null
     }
   ],
-  "type": "User",
-  "abstractKey": null
+  "storageKey": null
 },
-v5 = [
+v2 = [
   {
     "kind": "Literal",
     "name": "first",
@@ -82,14 +68,7 @@ v5 = [
     "name": "orderBy",
     "value": "rank"
   }
-],
-v6 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -103,32 +82,7 @@ return {
         "name": "FeedLinksFragment"
       },
       (v0/*: any*/),
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "kind": "LinkedField",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": null,
-            "kind": "LinkedField",
-            "name": "actor",
-            "plural": false,
-            "selections": [
-              (v1/*: any*/),
-              (v2/*: any*/),
-              (v3/*: any*/),
-              (v4/*: any*/)
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
+      (v1/*: any*/)
     ],
     "type": "Query",
     "abstractKey": null
@@ -141,7 +95,7 @@ return {
     "selections": [
       {
         "alias": null,
-        "args": (v5/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": "LinkConnection",
         "kind": "LinkedField",
         "name": "feed",
@@ -202,7 +156,13 @@ return {
                     "name": "totalComments",
                     "storageKey": null
                   },
-                  (v1/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
                   {
                     "alias": null,
                     "args": null,
@@ -224,7 +184,13 @@ return {
                     "name": "createdAt",
                     "storageKey": null
                   },
-                  (v6/*: any*/)
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "__typename",
+                    "storageKey": null
+                  }
                 ],
                 "storageKey": null
               }
@@ -236,7 +202,7 @@ return {
       },
       {
         "alias": null,
-        "args": (v5/*: any*/),
+        "args": (v2/*: any*/),
         "filters": [
           "date",
           "orderBy"
@@ -247,46 +213,20 @@ return {
         "name": "feed"
       },
       (v0/*: any*/),
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "kind": "LinkedField",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": null,
-            "kind": "LinkedField",
-            "name": "actor",
-            "plural": false,
-            "selections": [
-              (v6/*: any*/),
-              (v1/*: any*/),
-              (v2/*: any*/),
-              (v3/*: any*/),
-              (v4/*: any*/)
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
+      (v1/*: any*/)
     ]
   },
   "params": {
-    "cacheID": "52b3079945b4987e63e5b4ee8e06f20f",
+    "cacheID": "7501876c0db41e53e4408004c1650ac6",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    actor {\n      __typename\n      id\n      name\n      joined\n      ... on User {\n        email\n      }\n    }\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    score\n    name\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7bbd7e3da946ecdb3b2805cf709b0ffa";
+(node as any).hash = "45c36336e0e7a6e4443a44d647956b9d";
 
 export default node;

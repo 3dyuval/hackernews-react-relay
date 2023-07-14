@@ -46,7 +46,6 @@ export default function Comments() {
       return
     }
 
-    enqueueSnackbar('Posting comment...', { variant: 'info' })
     const form = new FormData(e.target)
 
     mutate({
@@ -55,11 +54,9 @@ export default function Comments() {
         link,
       },
       onCompleted: () => {
-        closeSnackbar()
-        enqueueSnackbar('Success', { variant: 'success' })
+        enqueueSnackbar('Success', { variant: 'sucess' })
       },
       onError: () => {
-        closeSnackbar()
         enqueueSnackbar('Error', { variant: 'error' })
       },
     })

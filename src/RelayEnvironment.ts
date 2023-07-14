@@ -9,9 +9,6 @@ import {
 const HTTP_ENDPOINT = 'http://localhost:4000/graphql'
 
 const fetchFn: FetchFunction = async (request, variables) => {
-  const {cookie} = document
-
-  // https://javascript.info/fetch-crossorigin
   const resp = await fetch(HTTP_ENDPOINT, {
     method: 'POST',
     credentials: 'include', 

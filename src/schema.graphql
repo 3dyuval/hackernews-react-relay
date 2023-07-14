@@ -1,31 +1,11 @@
- interface Node {
+  interface Node {
     id: ID!
-  }
-
-  interface Actor {
-    id: ID!
-    name: String
-    profilePicture: Image
-    joined: String
-  }
-
-  type User implements Node & Actor {
-    id: ID!
-    name: String
-    email: String
-    profilePicture: Image
-    joined: String
-  }
-
-  type Image {
-    url(height: Int, width: Int): String!
-    altText: String
   }
 
   type LinkConnection {
     edges: [LinkEdge]
     pageInfo: PageInfo!
-	  totalCount: Int!
+    totalCount: Int!
   }
 
   type LinkEdge {
@@ -48,7 +28,7 @@
     comments: CommentConnection
     createdAt: String!
     totalComments: Int!
-    poster: User
+    userId: String
   }
 
   type CommentConnection {
@@ -64,7 +44,7 @@
   type Comment implements Node {
     id: ID!
     body: String!
-    link: Link
+    parent: String
   }
 
   type Topic {
@@ -74,7 +54,7 @@
 
   type Query {
     viewer: Viewer
-    node(id: ID!): Node 
+    node(id: ID!): Node
     info: String!
     feed(first: Int, after: String, date: String, orderBy: String): LinkConnection!
     comment(id: ID!): Comment
@@ -83,11 +63,12 @@
   }
 
   type Viewer {
-    actor: Actor
+    score: Int
+    name: String
   }
 
   type Mutation {
     postLink(url: String!, description: String!): Link!
-    postCommentOnLink(linkId: ID!, body: String!): Comment!
+    postCommentOnLink(linkId: ID!, body: String!, parentId: String): Comment!
     createTopic(id: String!, name: String!): Topic!
   }

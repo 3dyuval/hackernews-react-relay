@@ -12,14 +12,8 @@ const query = graphql`
     ...FeedLinksFragment
     info
     viewer {
-      actor {
-        id
-        name
-        joined
-        ... on User {
-          email
-        }
-      }
+      score
+      name
     }
   }
 `
@@ -28,11 +22,12 @@ export default function App() {
 
   const data = useLazyLoadQuery<AppQueryType>(query, {})
   const {info} = data
+  const {viewer} = data
 
   return (
     <>
       <div className="app">
-        <Navigation info={info} actor={data.viewer.actor} />
+        <Navigation info={info} viewer={viewer}  />
         <Suspense>
           <Routes>
             <Route path="/*" element={<Feed feed={data} />} />
