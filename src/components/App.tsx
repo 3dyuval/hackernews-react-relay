@@ -3,7 +3,7 @@ import { useLazyLoadQuery, graphql } from 'react-relay'
 import { AppQuery as AppQueryType } from './__generated__/AppQuery.graphql'
 import Navigation from '@/components/Navigation'
 import { Routes, Route } from 'react-router-dom'
-import Comments from '@/components/Comments'
+import LinkPage from '@/components/LinkPage'
 import Feed from '@/components/Feed'
 import PostLink from './PostLink'
 
@@ -31,7 +31,7 @@ export default function App() {
         <Suspense>
           <Routes>
             <Route path="/*" element={<Feed feed={data} />} />
-            <Route path="/link/:link" element={<Comments />} />
+            <Route path="/link/:link" element={<LinkPage />} />
             <Route path="/post-link" element={<PostLink />} />
           </Routes>
         </Suspense>

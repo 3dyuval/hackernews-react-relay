@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom'
 import {useState} from 'react'
-import { useLazyLoadQuery, useMutation } from 'react-relay'
+import { useLazyLoadQuery, useMutation} from 'react-relay'
 import { graphql } from 'relay-runtime'
-import { CommentsQuery as CommentsQueryType } from '@relay/CommentsQuery.graphql'
+import { LinkPageQuery as LinkPageQueryType } from '@relay/LinkPageQuery.graphql'
 import Link from './Link'
 import { useFusionAuth } from '@fusionauth/react-sdk'
 import { enqueueSnackbar, closeSnackbar } from 'notistack'
 
-const LinkCommentsQuery = graphql`
-  query CommentsQuery($id: ID!) {
+const LinkPageQuery = graphql`
+  query LinkPageQuery($id: ID!) {
     link(id: $id) {
       ...LinkFragment
       comments {
@@ -23,8 +23,8 @@ const LinkCommentsQuery = graphql`
     }
   }
 `
-const CommentsMutation = graphql`
-  mutation CommentsMutation($link: ID!, $body: String!, $parentId: String) {
+const LinkPageMutation = graphql`
+  mutation LinkPageMutation($link: ID!, $body: String!, $parentId: String) {
     postCommentOnLink(linkId: $link, body: $body, parentId: $parentId) {
       id
     }
@@ -35,11 +35,11 @@ export default function Comments() {
   const [replying, setReplying] = useState(null)
   const { link } = useParams()
 
-  const data = useLazyLoadQuery<CommentsQueryType>(LinkCommentsQuery, {
+  const data = useLazyLoadQuery<LinkPageQueryType>(LinkPageQuery, {
     id: link,
   })
 
-  const [mutate, isMutating] = useMutation(CommentsMutation)
+  const [mutate, isMutating] = useMutation(LinkPageMutation)
   const { isAuthenticated, login } = useFusionAuth()
 
   function onSubmit(e) {
@@ -68,7 +68,7 @@ export default function Comments() {
   }
 
 
-  function sort(data: CommentsQueryType['response']) {
+  function sort(data: LinkPageQueryType['response']) {
     const nodes = structuredClone(Object.values(data.link.comments.edges).map(e => e.node))
     for (const node of nodes) {
       if (node.parentId) {

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a948691def70ad185ba738efd1b7f79b>>
+ * @generated SignedSource<<b0f47a67d6f998a14c6a5b6826c84062>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,19 +9,19 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
-export type CommentsMutation$variables = {
+export type LinkPageMutation$variables = {
   body: string;
   link: string;
   parentId?: string | null;
 };
-export type CommentsMutation$data = {
+export type LinkPageMutation$data = {
   readonly postCommentOnLink: {
     readonly id: string;
   };
 };
-export type CommentsMutation = {
-  response: CommentsMutation$data;
-  variables: CommentsMutation$variables;
+export type LinkPageMutation = {
+  response: LinkPageMutation$data;
+  variables: LinkPageMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -85,7 +85,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "CommentsMutation",
+    "name": "LinkPageMutation",
     "selections": (v3/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -98,20 +98,20 @@ return {
       (v2/*: any*/)
     ],
     "kind": "Operation",
-    "name": "CommentsMutation",
+    "name": "LinkPageMutation",
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "50418516fbed569043a758b8604e6c58",
+    "cacheID": "d3aee7389018aa961b4ab1ad3b09eb70",
     "id": null,
     "metadata": {},
-    "name": "CommentsMutation",
+    "name": "LinkPageMutation",
     "operationKind": "mutation",
-    "text": "mutation CommentsMutation(\n  $link: ID!\n  $body: String!\n  $parentId: String\n) {\n  postCommentOnLink(linkId: $link, body: $body, parentId: $parentId) {\n    id\n  }\n}\n"
+    "text": "mutation LinkPageMutation(\n  $link: ID!\n  $body: String!\n  $parentId: String\n) {\n  postCommentOnLink(linkId: $link, body: $body, parentId: $parentId) {\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "1575f115eebb79f7cc458061f956ab12";
+(node as any).hash = "9eeecd0837af3211a91a4f7e4628a9e9";
 
 export default node;

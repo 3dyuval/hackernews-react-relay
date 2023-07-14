@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c740460050ef9acc95f4ed4633eaa1ac>>
+ * @generated SignedSource<<59d30dee3c89307fc81f18bf02930644>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,10 +10,10 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CommentsQuery$variables = {
+export type LinkPageQuery$variables = {
   id: string;
 };
-export type CommentsQuery$data = {
+export type LinkPageQuery$data = {
   readonly link: {
     readonly comments: {
       readonly edges: ReadonlyArray<{
@@ -27,9 +27,9 @@ export type CommentsQuery$data = {
     readonly " $fragmentSpreads": FragmentRefs<"LinkFragment">;
   } | null;
 };
-export type CommentsQuery = {
-  response: CommentsQuery$data;
-  variables: CommentsQuery$variables;
+export type LinkPageQuery = {
+  response: LinkPageQuery$data;
+  variables: LinkPageQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -107,7 +107,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "CommentsQuery",
+    "name": "LinkPageQuery",
     "selections": [
       {
         "alias": null,
@@ -134,7 +134,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "CommentsQuery",
+    "name": "LinkPageQuery",
     "selections": [
       {
         "alias": null,
@@ -180,16 +180,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0ccbbf5374db107b3e4e56bec2708a50",
+    "cacheID": "e5d388305d225a607707a035f2b7ca6f",
     "id": null,
     "metadata": {},
-    "name": "CommentsQuery",
+    "name": "LinkPageQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query LinkPageQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7f91a261af2b86d190b1a1be663d0738";
+(node as any).hash = "080a45563cc27cef32d51b6592e9157e";
 
 export default node;
