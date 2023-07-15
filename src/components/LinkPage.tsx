@@ -69,21 +69,6 @@ export default function Comments() {
   }
 
 
-  function sort(data: LinkPageQueryType['response']) {
-    const nodes = structuredClone(Object.values(data.link.comments.edges).map(e => e.node))
-    for (const node of nodes) {
-      if (node.parentId) {
-        const parentIndex = nodes.findIndex(i => i.id === node.parentId)
-        const childIndex = nodes.findIndex(i => i.id === node.id)
-        const [splicedChild] = nodes.splice(childIndex, 1)
-        //@ts-ignore
-        splicedChild.indent = 1
-        nodes.splice(parentIndex + 1, 0, splicedChild )
-      }
-    }
-    return nodes
-  }
-
   return (
     <div className="app-content">
       <div className="mx-8 py-2 space-y-2">
@@ -120,7 +105,3 @@ export default function Comments() {
     </div>
   )
 }
-
-        // sort(data).map((node, index) => (
-      
-          // ))}
