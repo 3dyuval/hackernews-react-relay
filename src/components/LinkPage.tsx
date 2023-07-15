@@ -6,6 +6,7 @@ import { LinkPageQuery as LinkPageQueryType } from '@relay/LinkPageQuery.graphql
 import Link from './Link'
 import { useFusionAuth } from '@fusionauth/react-sdk'
 import { enqueueSnackbar, closeSnackbar } from 'notistack'
+import CommentSection from './CommentsSection'
 
 const LinkPageQuery = graphql`
   query LinkPageQuery($id: ID!) {
@@ -112,17 +113,14 @@ export default function Comments() {
           </button>
         </form>
         <br />
-        {data && replying === null &&
-          sort(data).map((node, index) => (
-            <div style={{paddingLeft: `${node.indent * 8}px`}} key={index}>
-              <p>{node.body}</p>
-              <span
-              onClick={() => setReplying(node.id)}
-              className="text-xs text-zinc-500 [&>*]:mx-1"
-              role="button">reply</span>
-            </div>
-          ))}
+        {data && !replying && <CommentSection 
+        setReplying={setReplying}
+        comments={data.link.comments} />}
       </div>
     </div>
   )
 }
+
+        // sort(data).map((node, index) => (
+      
+          // ))}
