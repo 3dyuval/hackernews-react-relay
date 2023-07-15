@@ -1,14 +1,8 @@
 import { Link, NavLink } from 'react-router-dom'
-import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
-  FusionAuthLoginButton,
-  FusionAuthLogoutButton,
-  RequireAuth,
   useFusionAuth
 } from '@fusionauth/react-sdk';
-import { graphql } from 'relay-runtime';
-import { useFragment } from 'react-relay';
 
 
 type Props = {
@@ -21,8 +15,7 @@ type Props = {
 
 export default function Navigation({ info, viewer }: Props) {
 
-
-  const [URLSearchParams, setURLSearchParams] = useSearchParams()
+  const [URLSearchParams] = useSearchParams()
 
   const { isAuthenticated, user , logout, login} = useFusionAuth();
 
@@ -91,7 +84,7 @@ export default function Navigation({ info, viewer }: Props) {
         <span className="accent-teal-900">({viewer.score})</span>
         <span role="button" onClick={logout}>Logout</span>
         </>
-         :<span role="button" onClick={login} >Login</span>}
+         :<span role="button" onClick={() => login()} >Login</span>}
       </div>
     </div>
   )

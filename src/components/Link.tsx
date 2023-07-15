@@ -24,7 +24,7 @@ export default function Link({ link , index}: Props) {
   return (
     <div className="app-content">
       <LinkHead link={data} index={index} />
-      <LinkSubtext totalComments={data.totalComments} id={data.id} link={data} />
+      <LinkSubtext link={data} />
     </div>
   )
 }

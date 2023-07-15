@@ -29,7 +29,7 @@ export default function PostLink() {
       onError: (error) => {
         enqueueSnackbar(error.toString(), { variant: "error"})
       },
-      onCompleted: ({ postLink }) => {
+      onCompleted: ({ postLink }: any) => {
         navigate(`/link/${postLink.id}`)
         enqueueSnackbar('Link posted!', { variant: "success"})
 

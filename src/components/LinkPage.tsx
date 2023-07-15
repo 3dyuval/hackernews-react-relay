@@ -5,7 +5,7 @@ import { graphql } from 'relay-runtime'
 import { LinkPageQuery as LinkPageQueryType } from '@relay/LinkPageQuery.graphql'
 import Link from './Link'
 import { useFusionAuth } from '@fusionauth/react-sdk'
-import { enqueueSnackbar, closeSnackbar } from 'notistack'
+import { enqueueSnackbar } from 'notistack'
 import CommentSection from './CommentsSection'
 
 const LinkPageQuery = graphql`
