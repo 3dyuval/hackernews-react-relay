@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<19982757a2c43988d2d42e014e075819>>
+ * @generated SignedSource<<eb9fcb324d722f9a84025281b2cde15e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -50,6 +50,13 @@ v1 = [
 v2 = {
   "alias": null,
   "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
   "concreteType": "CommentConnection",
   "kind": "LinkedField",
   "name": "comments",
@@ -71,13 +78,7 @@ v2 = {
           "name": "node",
           "plural": false,
           "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "id",
-              "storageKey": null
-            },
+            (v2/*: any*/),
             {
               "alias": null,
               "args": null,
@@ -121,7 +122,7 @@ return {
             "kind": "FragmentSpread",
             "name": "LinkFragment"
           },
-          (v2/*: any*/)
+          (v3/*: any*/)
         ],
         "storageKey": null
       }
@@ -178,6 +179,7 @@ return {
             "name": "createdAt",
             "storageKey": null
           },
+          (v3/*: any*/),
           (v2/*: any*/)
         ],
         "storageKey": null
@@ -185,12 +187,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "aeb79286da2857d1de652f6f42ac4f39",
+    "cacheID": "fcbf5f1e731a84b437ae3d8a344002ad",
     "id": null,
     "metadata": {},
     "name": "LinkPageQuery",
     "operationKind": "query",
-    "text": "query LinkPageQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
+    "text": "query LinkPageQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

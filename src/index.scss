@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --hacknews-main-bg-color: rgb(246, 246, 239);
   --hackernews-color-primary-lightest: #ff923c;
   --hackernews-color-primary-lighter: #ff7e17;
   --hackernews-color-primary-light: #ff770b;
@@ -15,7 +16,7 @@
 
   --alert-color-info: #3578e5;
   --alert-color-info-secondary: #54c7ec;
-  
+
   --alert-color-default: #ebedf0;
   --alert-color-success: #1f966b;
   --alert-color-warning: #ffba00;
@@ -38,11 +39,6 @@
   background-color: var(--alert-color-warning);
 }
 
-
-
-
-
-
 body {
   font-size: 14px;
 }
@@ -58,8 +54,14 @@ body {
   }
 }
 
-.app-content {
-  background: rgb(246, 246, 239);
+.app {
+  max-width: 1080px;
+  margin: 8px auto;
+}
+
+main {
+  background-color: var(--hacknews-main-bg-color);
+  padding: 0 4px;
 }
 
 a[role="button"] {
@@ -70,8 +72,8 @@ a[role="button"] {
 }
 
 div.votearrow {
-  margin: 0 .4rem;
-  margin-top: .4rem;
+  margin: 0 0.4rem;
+  margin-top: 0.4rem;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 8px solid var(--hackernews-color-neutral);

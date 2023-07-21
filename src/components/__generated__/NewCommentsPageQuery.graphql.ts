@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f11afe04704a09781656b049227f4901>>
+ * @generated SignedSource<<f773dc5d03ee2bffc693b55c4ac62b10>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -53,6 +53,13 @@ v1 = {
       "storageKey": null
     }
   ],
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 };
 return {
@@ -151,18 +158,31 @@ return {
                     "name": "body",
                     "storageKey": null
                   },
+                  (v2/*: any*/),
                   {
                     "alias": null,
                     "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "parentId",
+                    "concreteType": "Link",
+                    "kind": "LinkedField",
+                    "name": "link",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "linkId",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "description",
+                        "storageKey": null
+                      },
+                      (v2/*: any*/)
+                    ],
                     "storageKey": null
                   }
                 ],
@@ -178,12 +198,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "5ea59a643a9ae205ac25c5cc89ba7989",
+    "cacheID": "a43b487e6bd2c018fa33d86077e56578",
     "id": null,
     "metadata": {},
     "name": "NewCommentsPageQuery",
     "operationKind": "query",
-    "text": "query NewCommentsPageQuery {\n  newComments {\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n    }\n  }\n}\n\nfragment CommentFragment on Comment {\n  createdAt\n  body\n  id\n  parentId\n}\n"
+    "text": "query NewCommentsPageQuery {\n  newComments {\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n      }\n    }\n    pageInfo {\n      hasNextPage\n    }\n  }\n}\n\nfragment CommentFragment on Comment {\n  createdAt\n  body\n  id\n  link {\n    linkId\n    description\n    id\n  }\n}\n"
   }
 };
 })();

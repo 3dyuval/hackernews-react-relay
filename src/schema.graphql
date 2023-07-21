@@ -21,12 +21,13 @@
   }
 
   type Link implements Node {
-    linkId: ID!
+    linkId: String!
+    id: ID!
     topic: String
     description: String!
     url: String!
     comments: CommentConnection
-    createdAt: String!
+    createdAt: Int!
     totalComments: Int!
     userId: String
   }
@@ -44,8 +45,9 @@
   type Comment implements Node {
     id: ID!
     body: String!
-    createdAt: String
+    createdAt: Int!
     parentId: String
+    link: Link
   }
 
   type Topic {

@@ -28,7 +28,15 @@ export default function NewComments() {
     return <>Loading</>
   }
 
-  return data.newComments.edges.map(({ node, cursor }) => (
-    <Comment comment={node} key={cursor} />
-  ))
+  return (
+    <main>
+      <ul>
+        {data.newComments.edges.map(({ node, cursor }) => (
+          <li>
+            <Comment comment={node} key={cursor} />
+          </li>
+        ))}
+      </ul>
+    </main>
+  )
 }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<59873f54622d04b04b11a7204901b0bf>>
+ * @generated SignedSource<<65ca2ab17ea8c745a90f9cc8a02becf0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -188,6 +188,13 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "__typename",
                     "storageKey": null
                   }
@@ -217,12 +224,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "03f068dfe6215d678a53fd55ec1d639e",
+    "cacheID": "e12c0148f82a5f6e0de95955e0959978",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    score\n    name\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
+    "text": "query AppQuery {\n  ...FeedLinksFragment\n  info\n  viewer {\n    score\n    name\n  }\n}\n\nfragment FeedLinksFragment on Query {\n  feed(first: 30, orderBy: \"rank\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

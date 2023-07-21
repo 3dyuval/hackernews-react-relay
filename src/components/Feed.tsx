@@ -80,16 +80,32 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
   }
 
   return (
-    <>
+    <main>
       {date && (
         <div className="text-zinc-600 text-md p-4">
           <p> Stories from {date} </p>
           <p>
-            Go back a <a role="button" onClick={() => changeDate.sub('days')}>day</a>,{' '}
-            <a role="button" onClick={() => changeDate.sub('months')}>month</a>, or{' '}
-            <a role="button" onClick={() => changeDate.sub('years')}>year</a>. Go forward a{' '}
-            <a role="button" onClick={() => changeDate.add('days')}>day</a> or{' '}
-            <a role="button" onClick={() => changeDate.add('months')}>month</a>.
+            Go back a{' '}
+            <a role="button" onClick={() => changeDate.sub('days')}>
+              day
+            </a>
+            ,{' '}
+            <a role="button" onClick={() => changeDate.sub('months')}>
+              month
+            </a>
+            , or{' '}
+            <a role="button" onClick={() => changeDate.sub('years')}>
+              year
+            </a>
+            . Go forward a{' '}
+            <a role="button" onClick={() => changeDate.add('days')}>
+              day
+            </a>{' '}
+            or{' '}
+            <a role="button" onClick={() => changeDate.add('months')}>
+              month
+            </a>
+            .
           </p>
         </div>
       )}
@@ -98,6 +114,6 @@ export default function Feed({ feed }: { feed: FeedLinksFragment$key }) {
           <Link link={node} key={cursor} index={index} />
         ))}
       {hasNextPage && <button onClick={onLoadMore}> Load more... </button>}
-    </>
+    </main>
   )
 }

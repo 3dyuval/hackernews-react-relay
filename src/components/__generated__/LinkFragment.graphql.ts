@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8a005eb3f9ebb603aeedf975774575f2>>
+ * @generated SignedSource<<14500b1de75a37d72ed4ae68c851fb20>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,7 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type LinkFragment$data = {
-  readonly createdAt: string;
+  readonly createdAt: number;
   readonly description: string;
   readonly linkId: string;
   readonly totalComments: number;

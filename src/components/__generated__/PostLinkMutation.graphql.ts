@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<79160f57fad1a63e4f1140a225a110b8>>
+ * @generated SignedSource<<0f2727f759ff1e22eef04bf7d9c1cbe5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -36,35 +36,23 @@ v1 = {
 },
 v2 = [
   {
-    "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "description",
-        "variableName": "description"
-      },
-      {
-        "kind": "Variable",
-        "name": "url",
-        "variableName": "url"
-      }
-    ],
-    "concreteType": "Link",
-    "kind": "LinkedField",
-    "name": "postLink",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "linkId",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
+    "kind": "Variable",
+    "name": "description",
+    "variableName": "description"
+  },
+  {
+    "kind": "Variable",
+    "name": "url",
+    "variableName": "url"
   }
-];
+],
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "linkId",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [
@@ -74,7 +62,20 @@ return {
     "kind": "Fragment",
     "metadata": null,
     "name": "PostLinkMutation",
-    "selections": (v2/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": (v2/*: any*/),
+        "concreteType": "Link",
+        "kind": "LinkedField",
+        "name": "postLink",
+        "plural": false,
+        "selections": [
+          (v3/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Mutation",
     "abstractKey": null
   },
@@ -86,15 +87,35 @@ return {
     ],
     "kind": "Operation",
     "name": "PostLinkMutation",
-    "selections": (v2/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": (v2/*: any*/),
+        "concreteType": "Link",
+        "kind": "LinkedField",
+        "name": "postLink",
+        "plural": false,
+        "selections": [
+          (v3/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "4169a4e7ea09645e507675a701432bb9",
+    "cacheID": "4e7ed5c9e8f8acd17099f0da0f04d6e9",
     "id": null,
     "metadata": {},
     "name": "PostLinkMutation",
     "operationKind": "mutation",
-    "text": "mutation PostLinkMutation(\n  $url: String!\n  $description: String!\n) {\n  postLink(url: $url, description: $description) {\n    linkId\n  }\n}\n"
+    "text": "mutation PostLinkMutation(\n  $url: String!\n  $description: String!\n) {\n  postLink(url: $url, description: $description) {\n    linkId\n    id\n  }\n}\n"
   }
 };
 })();
