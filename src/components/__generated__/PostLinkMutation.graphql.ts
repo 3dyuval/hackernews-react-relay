@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0aacc6caacc5403ccbfa79215c5fefdf>>
+ * @generated SignedSource<<79160f57fad1a63e4f1140a225a110b8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,7 +15,7 @@ export type PostLinkMutation$variables = {
 };
 export type PostLinkMutation$data = {
   readonly postLink: {
-    readonly id: string;
+    readonly linkId: string;
   };
 };
 export type PostLinkMutation = {
@@ -58,7 +58,7 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "id",
+        "name": "linkId",
         "storageKey": null
       }
     ],
@@ -89,16 +89,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "dce562b240e60e6fc3c43b4ab7e0b7e6",
+    "cacheID": "4169a4e7ea09645e507675a701432bb9",
     "id": null,
     "metadata": {},
     "name": "PostLinkMutation",
     "operationKind": "mutation",
-    "text": "mutation PostLinkMutation(\n  $url: String!\n  $description: String!\n) {\n  postLink(url: $url, description: $description) {\n    id\n  }\n}\n"
+    "text": "mutation PostLinkMutation(\n  $url: String!\n  $description: String!\n) {\n  postLink(url: $url, description: $description) {\n    linkId\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "63add3752dd45dfc0da63b10dacf532b";
+(node as any).hash = "ef0e653078922317b37a8046077c2647";
 
 export default node;

@@ -1,9 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
-import {
-  useFusionAuth
-} from '@fusionauth/react-sdk';
-
+import { useFusionAuth } from '@fusionauth/react-sdk'
 
 type Props = {
   info: string
@@ -14,12 +11,10 @@ type Props = {
 }
 
 export default function Navigation({ info, viewer }: Props) {
-
   const [URLSearchParams] = useSearchParams()
 
-  const { isAuthenticated, user , logout, login} = useFusionAuth();
+  const { isAuthenticated, user, logout, login } = useFusionAuth()
 
-  
   function getToday() {
     /* set URL search params insted of Route */
     const currentDate = new Date()
@@ -49,11 +44,14 @@ export default function Navigation({ info, viewer }: Props) {
               <li>threads</li>
             </NavLink>
             |
-            <Link to={"/?day=" + getToday()} className={URLSearchParams.has('day') ? 'text-white' : null}>
+            <Link
+              to={'/?day=' + getToday()}
+              className={URLSearchParams.has('day') ? 'text-white' : null}
+            >
               <li>past</li>
             </Link>
             |
-            <NavLink to="/comments">
+            <NavLink to="/new-comments">
               <li>comments</li>
             </NavLink>
             |
@@ -79,12 +77,19 @@ export default function Navigation({ info, viewer }: Props) {
         </nav>
       </div>
       <div className="space-x-1">
-        {isAuthenticated 
-        ? <><span>{user.email}</span>
-        <span className="accent-teal-900">({viewer.score})</span>
-        <span role="button" onClick={logout}>Logout</span>
-        </>
-         :<span role="button" onClick={() => login()} >Login</span>}
+        {isAuthenticated ? (
+          <>
+            <span>{user.email}</span>
+            <span className="accent-teal-900">({viewer.score})</span>
+            <span role="button" onClick={logout}>
+              Logout
+            </span>
+          </>
+        ) : (
+          <span role="button" onClick={() => login()}>
+            Login
+          </span>
+        )}
       </div>
     </div>
   )

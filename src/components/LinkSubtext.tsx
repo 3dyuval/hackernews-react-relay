@@ -6,7 +6,7 @@ type Props = {
   link: LinkFragment$data
 }
 
-export default function LinkSubtext ({ link}: Props) {
+export default function LinkSubtext({ link }: Props) {
   const distance = formatDistance(parseInt(link.createdAt), new Date(), {
     addSuffix: true,
   })
@@ -16,7 +16,7 @@ export default function LinkSubtext ({ link}: Props) {
       {distance}
       <Link to="">hide</Link>
       <Link to="">past</Link>
-      <Link to={'/link/' + btoa(JSON.stringify({link: Number.parseInt(link.id)}))}>
+      <Link to={'/link/' + link.linkId}>
         {link.totalComments === 0
           ? 'discuss'
           : `${link.totalComments} Comments`}

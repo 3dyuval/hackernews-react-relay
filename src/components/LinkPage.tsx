@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
-import {useState} from 'react'
-import { useLazyLoadQuery, useMutation} from 'react-relay'
+import { useState } from 'react'
+import { useLazyLoadQuery, useMutation } from 'react-relay'
 import { graphql } from 'relay-runtime'
 import { LinkPageQuery as LinkPageQueryType } from '@relay/LinkPageQuery.graphql'
 import Link from './Link'
@@ -56,11 +56,11 @@ export default function Comments() {
       variables: {
         body: form.get('commentText'),
         link,
-        parentId: replying
+        parentId: replying,
       },
       onCompleted: () => {
         setReplying(null)
-        enqueueSnackbar('Success', {variant: 'info'})
+        enqueueSnackbar('Success', { variant: 'info' })
       },
       onError: () => {
         enqueueSnackbar('Error', { variant: 'error' })
@@ -68,14 +68,20 @@ export default function Comments() {
     })
   }
 
-
   return (
     <div className="app-content">
       <div className="mx-8 py-2 space-y-2">
-        {
-        !replying ? <Link link={data.link} index={0} />
-        : (<p> {data.link.comments.edges.find(edge => edge.node.id === replying)?.node.body} </p>)
-      }
+        {!replying ? (
+          <Link link={data.link} index={0} />
+        ) : (
+          <p>
+            {' '}
+            {
+              data.link.comments.edges.find((edge) => edge.node.id === replying)
+                ?.node.body
+            }{' '}
+          </p>
+        )}
         <form
           onSubmit={onSubmit}
           className="flex flex-col justify-start comment-section"
@@ -98,9 +104,13 @@ export default function Comments() {
           </button>
         </form>
         <br />
-        {data && !replying && <CommentSection 
-        setReplying={setReplying}
-        comments={data.link.comments} />}
+        {data && !replying && (
+          <CommentSection
+            onReply={setReplying}
+            comments={data.link.comments}
+            linkId={link}
+          />
+        )}
       </div>
     </div>
   )

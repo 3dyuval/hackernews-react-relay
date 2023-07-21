@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dc15723b390a744089b0d326c19eb669>>
+ * @generated SignedSource<<a43b6cffc8314f11ea72990ce18afbee>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -173,7 +173,7 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "id",
+                    "name": "linkId",
                     "storageKey": null
                   },
                   {
@@ -228,12 +228,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "20e2fd2f1f72d7d1dd99475633769886",
+    "cacheID": "e9cd80e5f0a4c22fadf8f71f3aa1607c",
     "id": null,
     "metadata": {},
     "name": "FeedLinksPaginationQuery",
     "operationKind": "query",
-    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $date: String = null\n  $orderBy: String = \"rank\"\n) {\n  ...FeedLinksFragment_2IkXLK\n}\n\nfragment FeedLinksFragment_2IkXLK on Query {\n  feed(after: $cursor, first: $count, date: $date, orderBy: $orderBy) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query FeedLinksPaginationQuery(\n  $count: Int = 30\n  $cursor: String\n  $date: String = null\n  $orderBy: String = \"rank\"\n) {\n  ...FeedLinksFragment_2IkXLK\n}\n\nfragment FeedLinksFragment_2IkXLK on Query {\n  feed(after: $cursor, first: $count, date: $date, orderBy: $orderBy) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      cursor\n      node {\n        ...LinkFragment\n        __typename\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

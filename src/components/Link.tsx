@@ -6,7 +6,7 @@ import { LinkFragment$key } from './__generated__/LinkFragment.graphql'
 const LinkFragment = graphql`
   fragment LinkFragment on Link {
     totalComments
-    id
+    linkId
     description
     url
     createdAt
@@ -18,7 +18,7 @@ type Props = {
   index: number
 }
 
-export default function Link({ link , index}: Props) {
+export default function Link({ link, index }: Props) {
   const data = useFragment(LinkFragment, link)
 
   return (

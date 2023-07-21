@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<59d30dee3c89307fc81f18bf02930644>>
+ * @generated SignedSource<<19982757a2c43988d2d42e014e075819>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -50,13 +50,6 @@ v1 = [
 v2 = {
   "alias": null,
   "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-},
-v3 = {
-  "alias": null,
-  "args": null,
   "concreteType": "CommentConnection",
   "kind": "LinkedField",
   "name": "comments",
@@ -78,7 +71,13 @@ v3 = {
           "name": "node",
           "plural": false,
           "selections": [
-            (v2/*: any*/),
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "id",
+              "storageKey": null
+            },
             {
               "alias": null,
               "args": null,
@@ -122,7 +121,7 @@ return {
             "kind": "FragmentSpread",
             "name": "LinkFragment"
           },
-          (v3/*: any*/)
+          (v2/*: any*/)
         ],
         "storageKey": null
       }
@@ -151,7 +150,13 @@ return {
             "name": "totalComments",
             "storageKey": null
           },
-          (v2/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "linkId",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -173,19 +178,19 @@ return {
             "name": "createdAt",
             "storageKey": null
           },
-          (v3/*: any*/)
+          (v2/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "e5d388305d225a607707a035f2b7ca6f",
+    "cacheID": "aeb79286da2857d1de652f6f42ac4f39",
     "id": null,
     "metadata": {},
     "name": "LinkPageQuery",
     "operationKind": "query",
-    "text": "query LinkPageQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  id\n  description\n  url\n  createdAt\n}\n"
+    "text": "query LinkPageQuery(\n  $id: ID!\n) {\n  link(id: $id) {\n    ...LinkFragment\n    comments {\n      edges {\n        node {\n          id\n          body\n          parentId\n        }\n      }\n    }\n  }\n}\n\nfragment LinkFragment on Link {\n  totalComments\n  linkId\n  description\n  url\n  createdAt\n}\n"
   }
 };
 })();

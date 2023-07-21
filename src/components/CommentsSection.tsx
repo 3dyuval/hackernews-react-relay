@@ -1,35 +1,37 @@
 import React from 'react'
 import { LinkPageQuery$data } from '@relay/LinkPageQuery.graphql'
 
-type Comment =  LinkPageQuery$data['link']['comments']['edges'][number]['node'] 
-  & { children: Comment[] }
-
+type Comment =
+  LinkPageQuery$data['link']['comments']['edges'][number]['node'] & {
+    children: Comment[]
+  }
 
 type SetReplying = React.Dispatch<React.SetStateAction<string>>
 
 type CommentSectionProps = {
   comments: LinkPageQuery$data['link']['comments']
-  setReplying: SetReplying
+  onReply: SetReplying
+  linkId: string
 }
 
 type CommentProps = {
   comment: Comment
-  setReplying: SetReplying
+  onReply: SetReplying
 }
 
-const Comment = ({ comment, setReplying }: CommentProps) => {
-  const {  body  } = comment
+const Comment = ({ comment, onReply }: CommentProps) => {
+  const { body } = comment
 
   return (
     <div>
       <p>{body}</p>
-      <ReplyOnComment comment={comment} setReplying={setReplying} />
+      <ReplyOnComment comment={comment} onReply={onReply} />
       {comment.children && (
         <div style={{ marginLeft: '20px' }}>
           {/* Render child comments recursively */}
           {comment.children.map((child) => (
             <div key={child.id}>
-              <Comment comment={child} setReplying={setReplying} />
+              <Comment comment={child} onReply={onReply} />
             </div>
           ))}
         </div>
@@ -38,7 +40,7 @@ const Comment = ({ comment, setReplying }: CommentProps) => {
   )
 }
 
-const CommentSection = ({ comments, setReplying }: CommentSectionProps) => {
+const CommentSection = ({ comments, onReply, linkId }: CommentSectionProps) => {
   const buildCommentTree = (commentsArray) => {
     const commentMap = {}
     const commentTree = []
@@ -56,7 +58,7 @@ const CommentSection = ({ comments, setReplying }: CommentSectionProps) => {
 
       commentMap[id] = commentNode
 
-      if (!parentId) {
+      if (parentId === linkId) {
         // If the comment doesn't have a parentId, add it to the commentTree
         commentTree.push(commentNode)
       } else {
@@ -77,16 +79,16 @@ const CommentSection = ({ comments, setReplying }: CommentSectionProps) => {
       {/* Render sorted comments */}
       {sortedComments.map((comment) => (
         <div key={comment.id}>
-          <Comment comment={comment} setReplying={setReplying} />
+          <Comment comment={comment} onReply={onReply} />
         </div>
       ))}
     </div>
   )
 }
 
-const ReplyOnComment = ({ comment, setReplying }: CommentProps) => (
+const ReplyOnComment = ({ comment, onReply }: CommentProps) => (
   <span
-    onClick={() => setReplying(comment.id)}
+    onClick={() => onReply(comment.id)}
     className="text-xs text-zinc-500 [&>*]:mx-1"
     role="button"
   >

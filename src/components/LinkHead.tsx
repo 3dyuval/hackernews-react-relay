@@ -1,4 +1,4 @@
-import type {LinkFragment$data as LinkProps} from '@relay/LinkFragment.graphql'
+import type { LinkFragment$data as LinkProps } from '@relay/LinkFragment.graphql'
 
 type Props = {
   link: LinkProps
@@ -6,26 +6,18 @@ type Props = {
 }
 
 export default function LinkHead({ link, index }: Props) {
-
-  
   function onVoteClick() {
     alert('not implemented')
     // TODO mutate link.id
-  
   }
-  
+
   return (
     <div className="flex text-sm">
+      <div className="">{index && <span className="rank">{index}.</span>}</div>
       <div className="">
-        {index && <span className="rank">{index}.</span>}
-      </div>
-      <div className="">
-          <a
-          role="button"
-          onClick={onVoteClick}
-          >
-            <div className="votearrow" /> 
-          </a>
+        <a role="button" onClick={onVoteClick}>
+          <div className="votearrow" />
+        </a>
       </div>
       <div className="">
         <span>

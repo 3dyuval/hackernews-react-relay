@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8a005eb3f9ebb603aeedf975774575f2>>
+ * @generated SignedSource<<f615d20991916cddf8109b13d8121c52>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,65 +10,57 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type LinkFragment$data = {
-  readonly createdAt: string;
-  readonly description: string;
-  readonly linkId: string;
-  readonly totalComments: number;
-  readonly url: string;
-  readonly " $fragmentType": "LinkFragment";
+export type CommentFragment$data = {
+  readonly body: string;
+  readonly createdAt: string | null;
+  readonly id: string;
+  readonly parentId: string | null;
+  readonly " $fragmentType": "CommentFragment";
 };
-export type LinkFragment$key = {
-  readonly " $data"?: LinkFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"LinkFragment">;
+export type CommentFragment$key = {
+  readonly " $data"?: CommentFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "LinkFragment",
+  "name": "CommentFragment",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "totalComments",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "linkId",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "description",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "url",
-      "storageKey": null
-    },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
       "name": "createdAt",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "body",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "parentId",
+      "storageKey": null
     }
   ],
-  "type": "Link",
+  "type": "Comment",
   "abstractKey": null
 };
 
-(node as any).hash = "267fb69d97fe4958f81af88d67b2e369";
+(node as any).hash = "2c02718a59448ef3e9306a1616f20e3a";
 
 export default node;
